@@ -1,0 +1,6 @@
+{
+  "name": "OFOQ | Software Engineering & Digital Products",
+  "description": "Official website of OFOQ, an elite technology and software development team building world-class web applications, mobile platforms, bespoke digital products, and enterprise cloud solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
