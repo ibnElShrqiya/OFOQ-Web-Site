@@ -9,26 +9,26 @@ export const servicesData: ServiceItem[] = [
       ar: 'تطوير تطبيقات الويب والمنصات السحابية الحديثة'
     },
     shortDescription: {
-      en: 'High-performance, accessible, and scalable web platforms built with React, Next.js, TypeScript, and resilient cloud architectures.',
-      ar: 'بناء تطبيقات ويب فائقة السرعة والقابلية للتوسع باستخدام React و Next.js و TypeScript وأحدث المعايير البرمجية العالمية.'
+      en: 'Web applications and cloud platforms scoped to each project's requirements.',
+      ar: 'تطوير تطبيقات ويب وتقنيات سحابية وفق متطلبات ونطاق العمل المتفق عليه.'
     },
     fullDescription: {
-      en: 'OFOQ’s web engineering team builds enterprise-grade web applications, responsive customer portals, and dynamic SaaS platforms. We prioritize sub-second load times, modular component architectures, clean code maintainability, and seamless API integrations that scale effortlessly from day one.',
-      ar: 'يقوم مهندسو الويب في أفق بتطوير تطبيقات ويب بمستوى عالمي، وبوابات عملاء سريعة، ومنصات SaaS متقدمة. نركز على سرعة التحميل الفائقة، وهيكلة المكونات القابلة لإعادة الاستخدام، والشيفرات البرمجية النظيفة، والتكامل السلس مع واجهات البرمجة.'
+      en: 'Web projects can include application interfaces, APIs, and integrations. Architecture and performance goals are defined for each project.',
+      ar: 'قد تشمل مشاريع الويب واجهات التطبيقات وواجهات API والتكاملات. تُحدد البنية وأهداف الأداء لكل مشروع.'
     },
     deliverables: {
       en: [
         'Full-Stack Web App Development (React, Next.js, Node.js, TypeScript)',
         'Progressive Web Applications (PWAs) with Offline Caching',
         'Headless CMS & Custom High-Throughput Admin Dashboards',
-        'Performance Optimization & Core Web Vitals Excellence (< 1s FCP)',
+        'Performance review and optimization based on agreed goals',
         'Enterprise Single Sign-On (SSO) & Role-Based Access Control',
         'End-to-End Automated Testing (Playwright, Jest, Vitest)'
       ],
       ar: [
         'تطوير متكامل لتطبيقات الويب (React و Next.js و Node.js و TypeScript)',
         'تطبيقات ويب تقدمية (PWA) تدعم العمل بدون اتصال بالإنترنت',
-        'لوحات تحكم وإدارة محتوى مخصصة وفائقة السرعة',
+        'لوحات تحكم وإدارة محتوى حسب نطاق المشروع',
         'تحسين أداء المواقع ومؤشرات الويب الأساسية Core Web Vitals',
         'توحيد تسجيل الدخول وإدارة الصلاحيات المؤسسية الدقيقة',
         'أتمتة الفحوصات البرمجية الشاملة (Unit, Integration & E2E Testing)'
@@ -51,8 +51,8 @@ export const servicesData: ServiceItem[] = [
       ar: 'تجارب مستخدم انسيابية وسريعة للأجهزة المحمولة مبنية باستخدام Flutter و React Native و Swift و Kotlin.'
     },
     fullDescription: {
-      en: 'From consumer apps with millions of active users to specialized field operations tools, OFOQ engineers robust mobile products with offline-first synchronization, 60fps animations, biometric authentication, and frictionless mobile checkout experiences.',
-      ar: 'سواء كنت تطلق تطبيقاً جماهيرياً يخدم ملايين المستخدمين أو تطبيقاً مؤسسياً داخلياً، يبتكر فريق أفق حلولاً محمولة تدعم العمل دون إنترنت، ومعدل إطارات سلس 60fps، ومصادقة حيوية، ودفعاً إلكترونياً آمناً.'
+      en: 'Mobile application features are selected according to platform, product requirements, and supported integrations.',
+      ar: 'تُحدد ميزات تطبيقات الجوال وفق المنصة ومتطلبات المنتج والتكاملات المطلوبة.'
     },
     deliverables: {
       en: [
@@ -68,7 +68,7 @@ export const servicesData: ServiceItem[] = [
         'تطوير أصيل Native بنظامي Swift (iOS) و Kotlin (Android)',
         'بنية مزامنة البيانات والعمل دون اتصال بالإنترنت',
         'تكامل الدفع الإلكتروني Apple Pay و Google Pay والاشتراكات الدورية',
-        'إشعارات فورية وخدمات الموقع في الخلفية بكفاءة عالية لا تستهلك البطارية',
+        'إشعارات أو خدمات موقع حسب الحاجة وموافقة المستخدم',
         'إدارة النشر والتحديثات على متاجر App Store و Google Play'
       ]
     },
@@ -85,12 +85,12 @@ export const servicesData: ServiceItem[] = [
       ar: 'تصميم تجربة وواجهة المستخدم وبناء نظم التصميم'
     },
     shortDescription: {
-      en: 'Human-centric user journeys, high-conversion visual design, interactive prototypes, and scalable multi-brand design systems.',
+      en: 'User journeys, interface design, prototypes, and design systems as scoped for each project.',
       ar: 'تصميم تجارب رقمية تتمحور حول الإنسان، ورحلات مستخدم عالية التحويل، ونظم تصميم متكاملة وقابلة للتوسع.'
     },
     fullDescription: {
-      en: 'Exceptional software begins with deep user empathy. OFOQ’s product designers conduct user research, craft responsive wireframes, and construct comprehensive Figma design systems equipped with WCAG AA accessibility, interactive micro-states, and developer-ready design tokens.',
-      ar: 'يبدأ التميز البرمجي بفهم عميق لاحتياجات المستخدمين. يجري مصممو أفق أبحاث المستخدمين، ونماذج التفاعل الأولية، ونظم تصميم متكاملة في Figma تلبي معايير الوصول العالمية وتسهل عمل المطورين.'
+      en: 'Design work can include research, wireframes, prototypes, and design systems. Accessibility requirements are agreed for each project.',
+      ar: 'قد يشمل التصميم أبحاث المستخدمين والنماذج الأولية ونظم التصميم. تُحدد متطلبات الوصول لكل مشروع.'
     },
     deliverables: {
       en: [
@@ -98,7 +98,7 @@ export const servicesData: ServiceItem[] = [
         'Interactive Figma Clickable Prototypes & Usability Testing',
         'Comprehensive Component Design Systems & Typography Tokens',
         'Micro-Interactions, State Transitions & Fluid Animations',
-        'Accessibility (WCAG 2.1 AA) Compliance Auditing',
+        'Accessibility review against agreed requirements',
         'Bilingual Arabic (RTL) & English (LTR) UI Engineering Alignment'
       ],
       ar: [
@@ -106,7 +106,7 @@ export const servicesData: ServiceItem[] = [
         'نماذج تفاعلية قابلة للاختبار السريع واختبارات قابلية الاستخدام',
         'بناء مكتبات ونظم تصميم متكاملة Component Libraries & Design Tokens',
         'تصميم الحركات والتفاعلات الدقيقة Micro-Interactions',
-        'الامتثال لمعايير إمكانية الوصول العالمية للمحتوى (WCAG 2.1 AA)',
+        'مراجعة إمكانية الوصول وفق المتطلبات المتفق عليها',
         'تصميم متقن يدعم ثنائية الاتجاه: العربية (RTL) والإنجليزية (LTR)'
       ]
     },
@@ -123,17 +123,17 @@ export const servicesData: ServiceItem[] = [
       ar: 'هندسة البرمجيات المخصصة والأنظمة المؤسسية'
     },
     shortDescription: {
-      en: 'Scalable distributed backends, resilient microservices, high-throughput APIs, and mission-critical business automation systems.',
-      ar: 'بناء نظم خلفية موزعة، وخدمات مصغرة، وواجهات برمجية فائقة التحمل لتشغيل العمليات المؤسسية الحساسة.'
+      en: 'Custom software and backend development scoped to project requirements.',
+      ar: 'تطوير برمجيات مخصصة وأنظمة خلفية وفق متطلبات كل مشروع.'
     },
     fullDescription: {
       en: 'When off-the-shelf software falls short, OFOQ engineers tailored software solutions engineered to handle complex business logic, concurrent data transactions, and legacy system modernization. Built with clean architecture, domain-driven design, and strict type safety.',
-      ar: 'عندما تعجز الحلول الجاهزة عن تلبية متطلبات أعمالك، تصمم أفق برمجيات مخصصة للتعامل مع منطق الأعمال المعقد، وملايين العمليات المتزامنة، وتحديث الأنظمة القديمة مع الالتزام بمبادئ Clean Architecture و Domain-Driven Design.'
+      ar: 'عندما تعجز الحلول الجاهزة عن تلبية متطلبات أعمالك، تصمم أفق برمجيات مخصصة للتعامل مع منطق الأعمال المعقد، ومتطلبات المعالجة المتفق عليها، وتحديث الأنظمة القديمة مع الالتزام بمبادئ Clean Architecture و Domain-Driven Design.'
     },
     deliverables: {
       en: [
         'Distributed Backend Architecture (Go, Node.js, Python, Java)',
-        'High-Performance RESTful & GraphQL API Ecosystems',
+        'RESTful and GraphQL API development',
         'Event-Driven Microservices with Kafka and RabbitMQ',
         'Relational & NoSQL Database Modeling (PostgreSQL, MongoDB, Redis)',
         'Legacy Monolith Decomposition & Incremental Modernization',
@@ -161,19 +161,19 @@ export const servicesData: ServiceItem[] = [
       ar: 'الأتمتة الذكية وتكامل منتجات الذكاء الاصطناعي'
     },
     shortDescription: {
-      en: 'Empowering digital products with modern LLM capabilities, predictive data workflows, intelligent search, and autonomous business processes.',
-      ar: 'تضمين قدرات الذكاء الاصطناعي التوليدي ونماذج LLM المتطورة وأتمتة مسارات البيانات داخل منتجاتك الرقمية.'
+      en: 'Integrating AI or automation features where appropriate to the project.',
+      ar: 'إضافة ميزات الذكاء الاصطناعي أو الأتمتة عند ملاءمتها لمتطلبات المشروع.'
     },
     fullDescription: {
-      en: 'OFOQ bridges cutting-edge artificial intelligence with production web and mobile software. We integrate Google Gemini models, vector search databases, retrieval-augmented generation (RAG), and robotic workflow automation to deliver tangible business efficiency.',
-      ar: 'يربط فريق أفق بين أحدث ابتكارات الذكاء الاصطناعي والتطبيقات البرمجية العملية. ندمج نماذج Google Gemini، وقواعد البيانات الموجهة Vector Search، وتقنيات البحث المعزز بالتوليد (RAG)، وأتمتة مسارات العمل لرفع كفاءة أعمالك.'
+      en: 'AI and automation integrations can be considered when they fit the project requirements and available services.',
+      ar: 'يمكن مناقشة تكاملات الذكاء الاصطناعي والأتمتة إذا كانت مناسبة لمتطلبات المشروع والخدمات المتاحة.'
     },
     deliverables: {
       en: [
         'Gemini API & LLM Multi-Turn Integration & Custom Fine-Tuning',
         'Retrieval-Augmented Generation (RAG) Systems with Semantic Search',
         'Automated Document Processing & Natural Language Ingestion',
-        'Intelligent Analytics Dashboards & Predictive Metrics',
+        'Analytics dashboards, if included in the agreed scope',
         'Chatbot & Virtual Customer Assistant Engineering',
         'Workflow Orchestration (Temporal, Apache Airflow, n8n)'
       ],
@@ -181,7 +181,7 @@ export const servicesData: ServiceItem[] = [
         'تكامل نماذج Gemini والذكاء الاصطناعي التوليدي المتعدد المحادثات',
         'بناء أنظمة البحث الدلالي المعزز بالمعرفة المؤسسية (RAG)',
         'معالجة الوثائق واستخراج البيانات التلقائي باللغتين العربية والإنجليزية',
-        'لوحات تحليلات ذكية ومؤشرات تنبؤية دقيقة',
+        'لوحات تحليلات وتقارير، إذا شملها نطاق العمل',
         'تطوير المساعدات الافتراضية الذكية للمستخدمين',
         'أتمتة العمليات المتكررة وسلاسل الربط الآلي'
       ]
@@ -199,12 +199,12 @@ export const servicesData: ServiceItem[] = [
       ar: 'البنية السحابية وهندسة النشر المستمر (DevOps)'
     },
     shortDescription: {
-      en: 'Automated CI/CD pipelines, container orchestration, zero-downtime deployments, and optimized multi-cloud infrastructure.',
-      ar: 'أتمتة مسارات التطوير والنشر المستمر CI/CD، وإدارة الحاويات، والنشر البرمجي السلس بدون أي توقف في الخدمة.'
+      en: 'Deployment automation and infrastructure configuration based on project needs.',
+      ar: 'أتمتة النشر وإعداد البنية وفق احتياجات المشروع.'
     },
     fullDescription: {
-      en: 'Ship software rapidly with absolute confidence. OFOQ establishes modern DevOps automation spanning GitHub Actions, Kubernetes, Terraform Infrastructure as Code (IaC), automated testing gates, and 24/7 observability monitoring.',
-      ar: 'أطلق تحديثاتك البرمجية بسرعة وثقة تامة. يبني فريق أفق مسارات أتمتة حديثة تشمل GitHub Actions، وحاويات Kubernetes، والبنية التحتية المكتوبة بالشيفرات Terraform، وأنظمة المراقبة الاستباقية لتشغيل سلس ومستدام.'
+      en: 'Cloud and deployment work can include automation, infrastructure configuration, testing, and monitoring, depending on the project scope.',
+      ar: 'قد تشمل أعمال النشر السحابي الأتمتة وإعداد البنية والاختبارات والمراقبة، وفق نطاق المشروع.'
     },
     deliverables: {
       en: [
@@ -213,7 +213,7 @@ export const servicesData: ServiceItem[] = [
         'Kubernetes & Docker Container Orchestration & Autoscaling',
         'Multi-Cloud Strategy across AWS, Google Cloud, and Azure',
         'Observability, Distributed Tracing & Real-Time APM (Prometheus, Grafana)',
-        'Zero-Downtime Blue/Green and Canary Deployment Strategies'
+        'Deployment strategies selected for the application'
       ],
       ar: [
         'أتمتة مسارات النشر والتحديث البرمجي السريع عبر GitHub Actions',
@@ -221,7 +221,7 @@ export const servicesData: ServiceItem[] = [
         'إدارة وتوزيع الحاويات والتوسع التلقائي عبر Kubernetes',
         'إدارة بيئات الاستضافة السحابية على AWS و Google Cloud و Azure',
         'مراقبة الأداء وتتبع تدفق البيانات في الوقت الفعلي (Observability)',
-        'استراتيجيات النشر المتقدم (Blue/Green Deployments) دون انقطاع'
+        'استراتيجيات نشر تُختار حسب التطبيق'
       ]
     },
     technologies: ['Kubernetes', 'Docker', 'Terraform', 'AWS', 'Google Cloud', 'GitHub Actions'],

@@ -21,12 +21,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
           {lang === 'ar' ? 'فريق أفق البرمجي' : 'About OFOQ'}
         </span>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
-          {lang === 'ar' ? 'مهندسون ومصممون شغوفون بصناعة المستقبل الرقمي' : 'Software Engineers & Designers Building Digital Innovation'}
+          {lang === 'ar' ? 'عن فريق أفق' : 'About OFOQ'}
         </h1>
         <p className="mt-4 text-base text-slate-300 leading-relaxed">
           {lang === 'ar'
-            ? 'أفق هو فريق تقني متكامل يجمع بين خبرة هندسة البرمجيات المعقدة، والتصميم الإبداعي الانسيابي، وإدارة المنتجات الذكية. نعمل يداً بيد مع الشركات الناشئة الطموحة والمؤسسات الكبرى لتحويل الأفكار إلى منتجات رقمية عالمية المستوى تمتاز بالسرعة الفائقة، والتصميم الأخّاذ، والقابلية للتوسع.'
-            : 'OFOQ is a dedicated multidisciplinary software engineering and product design team. We partner with ambitious startup founders and forward-thinking enterprises to architect, design, and engineer world-class digital products characterized by blistering speed, intuitive design, and scalable clean code.'}
+            ? 'أفق فريق يعمل في مجال البرمجيات والمنتجات الرقمية. نناقش نطاق كل مشروع ومتطلباته قبل الاتفاق على الحل والجدول والتسليم.'
+            : 'OFOQ works on software and digital products. We discuss each project’s requirements, scope, timeline, and handover before agreeing on an approach.'}
         </p>
       </div>
 
@@ -35,48 +35,48 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
           <Code2 className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
-            {lang === 'ar' ? 'براعة الشيفرة النظيفة' : 'Clean Code Craftsmanship'}
+            {lang === 'ar' ? 'تنظيم الشيفرة' : 'Code Structure'}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
             {lang === 'ar'
-              ? 'نكتب كوداً منظماً وموثقاً وخالياً من التعقيدات الزائدة، مع فحوصات آلية تضمن استقرار النظام وسهولة صيانته.'
-              : 'Strict typing, modular components, automated tests, and domain-driven design ensuring painless long-term scalability.'}
+              ? 'يُحدد أسلوب تنظيم الشيفرة والتوثيق والفحوصات وفق احتياجات كل مشروع.'
+              : 'Code structure, documentation, and testing are agreed according to each project’s needs.'}
           </p>
         </div>
 
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
           <Palette className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
-            {lang === 'ar' ? 'تصميم يتمحور حول المستخدم' : 'Human-Centric UI/UX'}
+            {lang === 'ar' ? 'تصميم الواجهات' : 'Interface Design'}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
             {lang === 'ar'
-              ? 'نظم تصميم متكاملة في Figma تجمع بين جمال المظهر وسهولة الاستخدام وثنائية اللغة الحقيقية (العربية والإنجليزية).'
-              : 'Deep user empathy, pixel-perfect design systems, and responsive bilingual RTL/LTR interfaces that convert.'}
+              ? 'يمكن أن يشمل نطاق المشروع تصميم الواجهات ودعم العربية والإنجليزية حسب المتطلبات.'
+              : 'Project scope can include interface design and Arabic or English support, as required.'}
           </p>
         </div>
 
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
           <Layers className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
-            {lang === 'ar' ? 'تطوير رشيق كل أسبوعين' : 'Agile Sprint Velocity'}
+            {lang === 'ar' ? 'متابعة التقدم' : 'Project Updates'}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
             {lang === 'ar'
-              ? 'تحديثات مستمرة وعروض توضيحية حية كل أسبوعين تمنحكم رؤية كاملة وشفافة لمراحل بناء منتجكم.'
-              : 'Bi-weekly demo reviews, open Slack channels, and iterative sprint deliveries that eliminate surprises.'}
+              ? 'يُتفق على طريقة التواصل ومواعيد تحديثات المشروع عند تحديد نطاق العمل.'
+              : 'Communication channels and update frequency are agreed when the project scope is defined.'}
           </p>
         </div>
 
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
           <Sparkles className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
-            {lang === 'ar' ? 'اتفاق واضح على الملكية والتسليم' : 'Clear Ownership & Handover Terms'}
+            {lang === 'ar' ? 'التسليم' : 'Handover'}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
             {lang === 'ar'
-              ? 'تُحدد حقوق الملكية الفكرية وتسليم الشيفرات والملفات في اتفاق مكتوب خاص بكل مشروع.'
-              : 'Source-code handover and intellectual-property terms are agreed in writing for each project.'}
+              ? 'تُناقش ترتيبات التسليم والملكية ضمن الاتفاق الخاص بالمشروع.'
+              : 'Handover and ownership terms are discussed as part of each project agreement.'}
           </p>
         </div>
       </div>
@@ -121,7 +121,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
             {lang === 'ar' ? 'طريقة عملنا' : 'How We Work'}
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-            {lang === 'ar' ? 'فريق رقمي متاح للتواصل من أي مكان' : 'A digital team ready to work with clients anywhere'}
+            {lang === 'ar' ? 'التواصل والعمل عن بُعد' : 'Remote communication'}
           </h2>
         </div>
 

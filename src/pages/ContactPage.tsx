@@ -9,7 +9,8 @@ import {
   PhoneCall, 
   Lock, 
   AlertCircle,
-  MessageCircle
+  MessageCircle,
+  Mail
 } from 'lucide-react';
 
 interface ContactPageProps {
@@ -322,7 +323,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               <MessageCircle className="w-5 h-5" />
               <span>{lang === 'ar' ? 'ابدأ محادثة واتساب' : 'Start a WhatsApp chat'}</span>
             </a>
-            <p className="text-xs text-slate-500">{lang === 'ar' ? 'البريد الإلكتروني الرسمي سيُضاف بعد إنشائه.' : 'The official email will be added once it is created.'}</p>
+            <a href="mailto:harammasr54@gmail.com" dir="ltr" className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-950/50 p-4 hover:border-cyan-500/60 transition-colors">
+              <Mail className="w-5 h-5 text-cyan-400 shrink-0" />
+              <span className="font-mono text-sm text-white break-all">harammasr54@gmail.com</span>
+            </a>
           </div>
 
           {/* Confidentiality */}

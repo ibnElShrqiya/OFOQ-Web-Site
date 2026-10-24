@@ -34,20 +34,20 @@ export const CyberVisual: React.FC<CyberVisualProps> = ({
 
           {/* Web & Mobile Clients (Left) */}
           <rect x="40" y="80" width="120" height="70" rx="8" fill="url(#nodeGrad)" stroke="#38bdf8" strokeWidth="1.5" />
-          <text x="55" y="105" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Next.js 15 Web</text>
-          <text x="55" y="122" fill="#94a3b8" fontSize="10" fontFamily="JetBrains Mono">React 19 · SSR</text>
-          <text x="55" y="138" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Tailwind v4 · FCP &lt; 0.8s</text>
+          <text x="55" y="105" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Web Application</text>
+          <text x="55" y="122" fill="#94a3b8" fontSize="10" fontFamily="JetBrains Mono">Frontend</text>
+          <text x="55" y="138" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Responsive interface</text>
 
           <rect x="40" y="180" width="120" height="70" rx="8" fill="url(#nodeGrad)" stroke="#06b6d4" strokeWidth="1.5" />
-          <text x="55" y="205" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Flutter Mobile</text>
-          <text x="55" y="222" fill="#94a3b8" fontSize="10" fontFamily="JetBrains Mono">iOS Swift · Kotlin</text>
-          <text x="55" y="238" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Offline-First · 60fps</text>
+          <text x="55" y="205" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Mobile Application</text>
+          <text x="55" y="222" fill="#94a3b8" fontSize="10" fontFamily="JetBrains Mono">iOS · Android</text>
+          <text x="55" y="238" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Mobile features</text>
 
           {/* API Gateway & Orchestration (Center) */}
           <polygon points="300,75 365,165 300,255 235,165" fill="#0c1f3d" stroke="#22d3ee" strokeWidth="2" />
-          <text x="262" y="155" fill="#e0f2fe" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">API GATEWAY</text>
-          <text x="268" y="172" fill="#38bdf8" fontSize="10" fontFamily="JetBrains Mono">GraphQL · REST</text>
-          <text x="272" y="188" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Sub-80ms Latency</text>
+          <text x="262" y="155" fill="#e0f2fe" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">APPLICATION API</text>
+          <text x="268" y="172" fill="#38bdf8" fontSize="10" fontFamily="JetBrains Mono">API</text>
+          <text x="272" y="188" fill="#64748b" fontSize="9" fontFamily="JetBrains Mono">Request handling</text>
 
           {/* Connecting Data Pipelines */}
           <path d="M 160 115 L 235 165" stroke="url(#codeFlowGrad)" strokeWidth="2" strokeDasharray="4 4" />
@@ -55,16 +55,16 @@ export const CyberVisual: React.FC<CyberVisualProps> = ({
 
           {/* Microservices & Cloud Backends (Right) */}
           <rect x="440" y="55" width="125" height="60" rx="8" fill="url(#nodeGrad)" stroke="#38bdf8" strokeWidth="1.5" />
-          <text x="455" y="80" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Go Microservice</text>
-          <text x="455" y="98" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">High-Throughput APIs</text>
+          <text x="455" y="80" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Backend Service</text>
+          <text x="455" y="98" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">Application logic</text>
 
           <rect x="440" y="135" width="125" height="60" rx="8" fill="url(#nodeGrad)" stroke="#06b6d4" strokeWidth="1.5" />
-          <text x="455" y="160" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Gemini AI Engine</text>
-          <text x="455" y="178" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">Multi-Turn · RAG Search</text>
+          <text x="455" y="160" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Optional AI Service</text>
+          <text x="455" y="178" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">External integration</text>
 
           <rect x="440" y="215" width="125" height="60" rx="8" fill="url(#nodeGrad)" stroke="#0284c7" strokeWidth="1.5" />
-          <text x="455" y="240" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Postgres &amp; Redis</text>
-          <text x="455" y="258" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">Read Replicas · Cache</text>
+          <text x="455" y="240" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Data Storage</text>
+          <text x="455" y="258" fill="#94a3b8" fontSize="9" fontFamily="JetBrains Mono">Database · Cache</text>
 
           {/* Connection Lines to Services */}
           <path d="M 365 165 L 440 85" stroke="url(#codeFlowGrad)" strokeWidth="2" strokeDasharray="3 3" />
@@ -77,7 +77,7 @@ export const CyberVisual: React.FC<CyberVisualProps> = ({
 
           {/* Title bar */}
           <rect x="20" y="20" width="180" height="30" rx="4" fill="#070e1c" stroke="#1e293b" />
-          <text x="32" y="39" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="600">OFOQ SOFTWARE ARCHITECTURE</text>
+          <text x="32" y="39" fill="#22d3ee" fontSize="11" fontFamily="JetBrains Mono" fontWeight="600">ILLUSTRATIVE ARCHITECTURE</text>
         </svg>
 
         {/* Bottom bar overlay */}
@@ -100,9 +100,9 @@ export const CyberVisual: React.FC<CyberVisualProps> = ({
       <svg viewBox="0 0 600 340" className="w-full h-full relative z-10" fill="none">
         <rect x="80" y="90" width="140" height="150" rx="8" fill="#0b172d" stroke="#0ea5e9" strokeWidth="1.5" />
         <text x="95" y="120" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Component Library</text>
-        <text x="95" y="140" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">120+ Design Tokens</text>
-        <text x="95" y="160" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">WCAG 2.1 AA Compliant</text>
-        <text x="95" y="180" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Arabic RTL Ready</text>
+        <text x="95" y="140" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Reusable design tokens</text>
+        <text x="95" y="160" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Accessibility requirements</text>
+        <text x="95" y="180" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Arabic RTL support</text>
         <circle cx="150" cy="210" r="5" fill="#22d3ee" />
 
         <polygon points="300,80 370,165 300,250 230,165" fill="#082544" stroke="#22d3ee" strokeWidth="2" />
@@ -110,7 +110,7 @@ export const CyberVisual: React.FC<CyberVisualProps> = ({
         <text x="263" y="176" fill="#38bdf8" fontSize="10" fontFamily="JetBrains Mono">SYSTEM</text>
 
         <rect x="390" y="90" width="140" height="150" rx="8" fill="#0b172d" stroke="#0284c7" strokeWidth="1.5" />
-        <text x="405" y="120" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Production Apps</text>
+        <text x="405" y="120" fill="#38bdf8" fontSize="11" fontFamily="JetBrains Mono" fontWeight="bold">Application interfaces</text>
         <text x="405" y="140" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Web &amp; Mobile Clients</text>
         <text x="405" y="160" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Micro-Interactions</text>
         <text x="405" y="180" fill="#64748b" fontSize="10" fontFamily="JetBrains Mono">Consistent Brand UX</text>

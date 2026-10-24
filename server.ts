@@ -405,7 +405,7 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
 
 • **Next.js 15 (App Router) + React 19**:
   - استخدام مكونات الخادم (Server Components) لتقليل حزم JavaScript إلى الصفر في أجزاء العرض الثابتة.
-  - زمن تحميل أولي (FCP) أقل من 0.6 ثانية مع توافق استثنائي مع محركات البحث (SEO).
+  - حدد أهداف الأداء ثم قسها على أجهزة وظروف استخدام واقعية.
 • **Tailwind CSS v4**:
   - محرك تجميع فائق السرعة عبر Rust مع غياب كامل لأي Runtime Overhead.
 • **إدارة الحالة غير المتزامنة**:
@@ -424,12 +424,12 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
   - دعم أصلي لبيانات JSONB والفهارس المتقدمة (GIN/GiST) والبحث النصي الكامل.
   - امتداد **pgvector** للبحث الدلالي في تطبيقات الذكاء الاصطناعي بدون الحاجة لمحركات متفرقة.
 • **Redis (طبقة التخزين المؤقت فائقة السرعة)**:
-  - استجابة في أجزاء من الميلي ثانية (Sub-millisecond latency).
+  - استجابة في أجزاء من الميلي ثانية (latency measured for the selected setup).
   - استخدامه لإدارة الجلسات (Session Store)، وتحديد معدل الطلبات (Rate Limiting)، والـ Pub/Sub.
 • **MongoDB / NoSQL**:
   - يفضل استخدامه لسجلات الأحداث (Audit Logs) والكتالوجات ذات الحقول الديناميكية متغيرة البنية.
 
-⚡ **نصيحة أفق**: ابدأ دائماً بـ PostgreSQL مهيأة جيداً مع فهارس مدروسة، واستخدم Redis كطبقة Cache أمام الاستعلامات الثقيلة.`;
+⚡ **ملاحظة عامة**: ابدأ دائماً بـ PostgreSQL مهيأة جيداً مع فهارس مدروسة، واستخدم Redis كطبقة Cache أمام الاستعلامات الثقيلة.`;
     }
 
     // Backend, APIs & Architecture (Go, Node, Microservices vs Monolith)
@@ -437,9 +437,9 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
       return `**تصميم البنى التحتية والأنظمة الخلفية (Backend & System Architecture):**
 
 1. **النمط المعماري الموصى به**:
-   - **Modular Monolith أولاً**: نوصي بالبدء بنظام موحد منظم ضمن وحدات مستقلة (Clean Architecture)، وتجنب الانتقال إلى Microservices إلا بعد تجاوز المليون مستخدم نشط أو عندما تتطلب فرق عمل مستقلة نشر خدماتها بشكل منفصل.
+   - **Modular Monolith أولاً**: نوصي بالبدء بنظام موحد منظم ضمن وحدات مستقلة (Clean Architecture)، وتجنب الانتقال إلى Microservices إلا بعد تجاوز الاحتياجات المستخدمين المتوقعة أو عندما تتطلب فرق عمل مستقلة نشر خدماتها بشكل منفصل.
 2. **اختيار لغة الخلفية**:
-   - **Go (Golang)**: للخدمات عالية الحمل الحسابي، ومحركات المعالجة الفورية ذات استهلاك الذاكرة المنخفض وزمن استجابة < 20ms.
+   - **Go (Golang)**: للخدمات عالية الحمل الحسابي، ومحركات المعالجة الفورية ذات استهلاك الذاكرة المنخفض وزمن الاستجابة وفق عبء العمل ومتطلبات المشروع.
    - **Node.js (TypeScript) / Bun**: للتطبيقات التي تشترك في منطق الأنواع مع الـ Frontend مع إنتاجية تطوير متسارعة.
 3. **طبقة الـ APIs**:
    - **REST + OpenAPI 3.0**: لمعظم واجهات العملاء مع توثيق تلقائي.
@@ -464,11 +464,11 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
       return `**معمارية تكامل الذكاء الاصطناعي (AI & LLM Architecture):**
 
 • **اختيار النموذج**:
-  - استخدام **Gemini 3.8 Flash** للمهام المباشرة وسرعة الاستجابة اللحظية وتوفير التكلفة.
-  - استخدام **Gemini 4 Argon** للتفكير المنطقي المعقد وتحليل الشيفرات البرمجية الدقيقة.
+  - استخدام **a current Gemini Flash model selected for the project** للمهام المباشرة وسرعة الاستجابة الحسب إعدادات الخدمة والاتصال وتوفير التكلفة.
+  - استخدام **a model suited to complex reasoning, if available** للتفكير المنطقي المعقد وتحليل الشيفرات البرمجية الدقيقة.
 • **نمط RAG (Retrieval-Augmented Generation)**:
   - تخزين التضمينات المتجهية (Embeddings) في **PostgreSQL + pgvector** لربط الذكاء ببيانات الشركة الحية.
-  - تطبيق تقنيات Hybrid Search (مزيج البحث الدلالي مع البحث النصي Full-Text) لدقة استرجاع 98%+.
+  - تطبيق تقنيات Hybrid Search (مزيج البحث الدلالي مع البحث النصي Full-Text) لاختبار جودة الاسترجاع على بيانات المشروع.
 • **أمان الـ AI**:
   - حظر حقن الأوامر (Prompt Injection Defense) وتطبيق Sanitization للمدخلات قبل معالجتها.`;
     }
@@ -476,8 +476,8 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
     // Default fast technical answer
     return `**استشارة تقنية فورية من فريق أفق (OFOQ Technical Advisory):**
 
-وفق المعايير الهندسية الصارمة التي نعتمدها في أفق، ترتكز الحلول البرمجية عالية الاعتمادية على:
-1. **أمان الأنواع (Strict Typing)**: تطبيق TypeScript أو Go لمنع أخطاء زمن التشغيل في الإنتاج بنسبة تفوق 80%.
+من الاعتبارات العامة في المشاريع البرمجية:
+1. **أمان الأنواع (Strict Typing)**: تطبيق TypeScript أو Go لمنع أخطاء زمن التشغيل في الإنتاج مع إمكانية تقليل بعض فئات أخطاء وقت التشغيل
 2. **فصل الاهتمامات (Separation of Concerns)**: عزل طبقة واجهات المستخدم، ومنطق الأعمال (Domain Services)، ومستودعات البيانات (Repository Pattern).
 3. **استراتيجية التخزين المؤقت المتعدد (Multi-tier Caching)**: CDN للملفات الثابتة، Redis للبيانات النشطة، وفهارس متقدمة على مستوى قاعدة البيانات.
 4. **المراقبة والاستجابة الفورية**: تسجيل السجلات المنظمة (Structured Logging) ومتابعة مقاييس الأداء (APM).
@@ -486,7 +486,7 @@ function getTechnicalAdvisoryReply(query: string, lang: 'ar' | 'en'): string {
   } else {
     // Pure greetings
     if (q === 'hello' || q === 'hi' || q === 'hey' || q === 'good morning' || q === 'good evening') {
-      return `Hello! I am the **OFOQ Fast Technical Architect** ⚡
+      return `Hello! I am the **OFOQ Technical Assistant** ⚡
 I am strictly dedicated to providing immediate engineering and software advisory on:
 • Modern Web & Mobile Systems (React 19, Next.js 15, Flutter, Swift, Kotlin).
 • High-performance Backend & Databases (Go, Node.js, PostgreSQL, Redis).
@@ -521,7 +521,7 @@ How can I assist your engineering project today?`;
 
 • **Next.js 15 (App Router) + React 19**:
   - React Server Components (RSC) to achieve zero client-side JavaScript for static data trees.
-  - Sub-0.6s First Contentful Paint (FCP) and optimal Google Core Web Vitals.
+  - Set performance targets and measure them under realistic conditions.
 • **Tailwind CSS v4**:
   - Rust-based high-performance compiler with zero runtime CSS footprint.
 • **Data & State Management**:
@@ -549,12 +549,12 @@ How can I assist your engineering project today?`;
 
     // Backend & Microservices
     if (q.includes('backend') || q.includes('server') || q.includes('go') || q.includes('node') || q.includes('api') || q.includes('microservice') || q.includes('monolith')) {
-      return `**OFOQ Backend Architecture Standards:**
+      return `**General backend architecture considerations:**
 
 1. **Architecture Pattern**:
    - **Modular Monolith First**: Keep services in a structured, decoupled monolith (Clean Architecture / Hexagonal) until domain boundaries and traffic genuinely warrant distributed microservices.
 2. **Language Runtime**:
-   - **Go (Golang)**: For high-throughput concurrency, microservices, and sub-20ms P99 latency requirements.
+   - **Go (Golang)**: For high-throughput concurrency, microservices, and latency requirements measured against project workloads.
    - **Node.js / TypeScript**: For rapid API delivery and shared TypeScript contracts with frontend clients.
 3. **Protocols**:
    - **REST + OpenAPI 3**: Standard client-facing contract.
@@ -563,10 +563,10 @@ How can I assist your engineering project today?`;
 
     // DevOps & Cloud
     if (q.includes('docker') || q.includes('cloud') || q.includes('devops') || q.includes('kubernetes') || q.includes('ci/cd')) {
-      return `**OFOQ Cloud & DevOps Guidelines:**
+      return `**Common cloud and DevOps options:**
 
 • **Containerization**:
-  - Multi-stage Docker builds yielding minimal (<50MB) distroless container images.
+  - Multi-stage Docker builds yielding minimal (a size appropriate to the deployment) distroless container images.
 • **CI/CD Automation (GitHub Actions)**:
   - Automated pipeline: Lint -> Unit Tests -> Vulnerability Scan -> Container Build -> Immutable Deployment.
 • **Cloud Targets**:
@@ -576,11 +576,11 @@ How can I assist your engineering project today?`;
 
     // AI & LLM
     if (q.includes('ai') || q.includes('gemini') || q.includes('rag') || q.includes('llm')) {
-      return `**OFOQ Production AI Engineering:**
+      return `**Common AI integration considerations:**
 
 • **Model Hierarchy**:
-  - **Gemini 3.8 Flash**: Low-latency, cost-effective inference for real-time user assistance.
-  - **Gemini 4 Argon**: High-reasoning tasks, algorithmic verification, and complex code analysis.
+  - **a current Gemini Flash model selected for the project**: Low-latency, cost-effective inference for real-time user assistance.
+  - **a model suited to complex reasoning, if available**: High-reasoning tasks, algorithmic verification, and complex code analysis.
 • **Enterprise RAG**:
   - Hybrid search combining PostgreSQL \`pgvector\` cosine similarity with full-text search.
   - Prompt injection sanitization and output validation before delivering responses to the client.`;
@@ -589,8 +589,8 @@ How can I assist your engineering project today?`;
     // Default fast technical answer
     return `**OFOQ Technical Advisory:**
 
-Our core software engineering standards prioritize:
-1. **Strict Type Safety**: Preventing 80%+ of runtime faults through strict TypeScript or Go schemas.
+General software projects often consider:
+1. **Strict Type Safety**: Reducing some classes of runtime errors through strict TypeScript or Go schemas.
 2. **Domain-Driven Clean Architecture**: Decoupling UI presentation, domain business rules, and infrastructure data adapters.
 3. **Multi-tier Caching**: CDN edge caching, Redis data caching, and database read replica optimization.
 4. **Resilience & Observability**: Structured JSON logging, health checks, and automated CI/CD deployment pipelines.
@@ -656,28 +656,14 @@ app.post('/api/chat', async (req, res) => {
     if (ai) {
       try {
         const systemInstruction = safeLang === 'ar'
-          ? `أنت "مستشار أفق التقني السريع" (OFOQ Fast Tech Architect)، المساعد البرمجي والهندسي الرسمي لفريق "أُفُق" (OFOQ).
-
-قواعدك الصارمة (غير قابلة للنقاش):
-1. **التخصص التقني الحصري (Strictly Technical)**:
-   - تجيب فقط وحصرياً عن: هندسة البرمجيات، لغات البرمجة (TypeScript, Go, Python, Swift, Kotlin, Dart, SQL)، أطر العمل (React 19, Next.js, Flutter, Node.js, FastAPI)، تصميم قواعد البيانات (PostgreSQL, Redis)، واجهات البرمجة (REST, GraphQL, gRPC)، معمارية النظم والخدمات المصغرة، تجربة وواجهة المستخدم (UI/UX Design Systems)، البنية السحابية وأتمتة النشر (Docker, Kubernetes, CI/CD)، وتكامل الذكاء الاصطناعي (Gemini API, RAG).
-   - إذا سُئلت عن أي موضوع غير تقني: ارفض الإجابة بلباقة وحزم، واذكر أنك مخصص للردود التقنية والبرمجية فقط.
-
-2. **السرعة والإيجاز المباشر (Fast & Direct)**:
-   - أجب بسرعة ودقة فائقة. ادخل مباشرة في صلب الإجابة التقنية بدون مقدمات رنانة.
-   - استخدم النقاط والشيفرات البرمجية الدقيقة عند الحاجة.
-   - اختم بنصيحة هندسية عملية مبنية على أفضل الممارسات لفريق أفق.`
-          : `You are the "OFOQ Fast Tech Architect", the dedicated software engineering consultant for OFOQ.
-
-STRICT NON-NEGOTIABLE RULES:
-1. **STRICTLY TECHNICAL ONLY**:
-   - You ONLY answer questions related to software engineering, programming (TypeScript, Go, Python, Swift, Kotlin, Dart, SQL), modern frameworks (React 19, Next.js, Flutter, Node.js), system design, database modeling (PostgreSQL, Redis), APIs (GraphQL, REST), UI/UX design systems, cloud infrastructure (Docker, Kubernetes, CI/CD), and AI engineering (Gemini API, RAG).
-   - If asked about ANY non-technical topic: politely and firmly decline, stating you are exclusively dedicated to technical and software engineering queries.
-
-2. **SPEED & CONCISE PRECISION**:
-   - Answer rapidly with high technical accuracy.
-   - Jump straight to the technical solution; eliminate fluff.
-   - Use concise bullet points and minimal clean code snippets where relevant.`;
+          ? `أنت مساعد يجيب عن أسئلة تقنية عامة لصالح موقع أفق. قدّم إرشادات عامة وموجزة عن البرمجيات والتقنيات.
+لا تخترع معلومات عن أفق، مثل العملاء أو المشاريع أو خبرات الفريق أو الأسعار أو أوقات الرد أو التوافر أو الضمانات. إذا سُئلت عن هذه المعلومات ولم تكن موجودة في السياق، فقل إنك لا تعرف ووجّه المستخدم إلى التواصل مع الفريق.
+لا تَعِد بنتائج أو أداء أو أمان محدد. وضّح أن التوصيات تعتمد على متطلبات المشروع، واطلب التحقق من المعلومات المتغيرة مثل الإصدارات والأسعار والتوافر.
+لا تدّع أنك موظف أو مهندس لدى أفق. أجب بإيجاز، واستخدم أمثلة عملية عند الحاجة.`
+          : `You are a technical assistant for the OFOQ website. Give concise, general software and technology guidance.
+Do not invent facts about OFOQ, including clients, projects, team experience, prices, response times, availability, or guarantees. If asked for company details that are not present in context, say you do not know and direct the user to contact the team.
+Do not promise specific performance, security, or outcomes. Explain that recommendations depend on project requirements, and advise checking changeable details such as versions, prices, and availability.
+Do not claim to be an OFOQ employee or engineer. Answer concisely and use practical examples when useful.`;
 
         const contents = messages.map((m: { role: string; content: string }) => ({
           role: m.role === 'assistant' ? 'model' : 'user',

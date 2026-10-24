@@ -9,15 +9,13 @@ interface NavbarProps {
   onNavigate: (page: PageId) => void;
   lang: Language;
   onToggleLang: () => void;
-  onOpenSourceModal: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentPage,
   onNavigate,
   lang,
-  onToggleLang,
-  onOpenSourceModal
+  onToggleLang
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const t = translations[lang];
@@ -31,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 w-full bg-[#070d19]/90 backdrop-blur-md border-b border-slate-800/80 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-8 h-18">
+        <div className="flex min-h-16 items-center justify-between gap-2 py-2 sm:min-h-[4.5rem] sm:gap-4 lg:gap-8">
           
           {/* Zone 1: Single Brand Zone */}
           <button
@@ -228,15 +226,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full py-2.5 px-4 text-center text-xs font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 rounded-lg cursor-pointer"
             >
               {t.nav.ctaAudit}
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenSourceModal();
-              }}
-              className="w-full py-2 px-3 text-center text-xs font-medium text-slate-300 bg-slate-900 border border-slate-700 rounded-lg hover:border-cyan-500/50"
-            >
-              {t.nav.sourceCode} (.zip)
             </button>
           </div>
         </div>

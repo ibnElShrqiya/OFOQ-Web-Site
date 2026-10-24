@@ -79,7 +79,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 rounded-lg transition-all shadow-[0_4px_18px_-8px_rgba(6,182,212,0.24)] cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 rounded-lg transition-all shadow-[0_4px_18px_-8px_rgba(6,182,212,0.24)] cursor-pointer"
                 >
                   <span>{t.hero.primaryCta}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -87,76 +87,27 @@ export const HomePage: React.FC<HomePageProps> = ({
 
                 <button
                   onClick={() => onNavigate('projects')}
-                  className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-medium text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3.5 text-sm font-medium text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700 rounded-lg transition-colors cursor-pointer"
                 >
                   {t.hero.secondaryCta}
                 </button>
 
                 <button
                   onClick={() => onNavigate('chat')}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 text-xs font-semibold text-cyan-300 hover:text-cyan-200 bg-cyan-950/40 hover:bg-cyan-950/60 border border-cyan-800/60 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3.5 text-xs font-semibold text-cyan-300 hover:text-cyan-200 bg-cyan-950/40 hover:bg-cyan-950/60 border border-cyan-800/60 rounded-lg transition-colors cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
                   <span>{t.nav.chat}</span>
                 </button>
               </div>
 
-              {/* Unboxed Metadata Trust signals */}
-              <div className="pt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
-                <span>Remote-first Digital Engineering Team</span>
-                <span aria-hidden="true">·</span>
-                <span>Two-Week Agile Sprints</span>
-                <span aria-hidden="true">·</span>
-                <span>Clear Project Handover Terms</span>
-              </div>
             </div>
 
-            {/* Right Column: High-Fidelity Software Architecture Visual */}
+            {/* Right Column: Illustrative software architecture */}
             <div className="lg:col-span-5">
-              <CyberVisual type="architecture" title="OFOQ Full-Stack Architecture Visualizer" />
+              <CyberVisual type="architecture" title={lang === 'ar' ? 'رسم توضيحي لبنية برمجية' : 'Illustrative software architecture'} />
             </div>
 
-          </div>
-
-          {/* 4-Column KPI Strip placed below the hero split */}
-          <div className="mt-16 pt-10 border-t border-slate-800/80">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-              <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80">
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-cyan-400 tabular-nums">
-                  {t.hero.kpi1Value}
-                </div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">
-                  {t.hero.kpi1Label}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80">
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-white tabular-nums">
-                  {t.hero.kpi2Value}
-                </div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">
-                  {t.hero.kpi2Label}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80">
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-cyan-400 tabular-nums">
-                  {t.hero.kpi3Value}
-                </div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">
-                  {t.hero.kpi3Label}
-                </div>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/40 border border-slate-800/80">
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-emerald-400 tabular-nums">
-                  {t.hero.kpi4Value}
-                </div>
-                <div className="text-xs text-slate-400 mt-1 font-medium">
-                  {t.hero.kpi4Label}
-                </div>
-              </div>
-            </div>
           </div>
 
         </div>
@@ -433,7 +384,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-300">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-[11px] font-semibold">
                 <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{lang === 'ar' ? 'فائق السرعة (Gemini 3.1 Flash-Lite)' : 'Ultra-Fast Response'}</span>
+                <span>{lang === 'ar' ? 'اقتراحات مولّدة بالذكاء الاصطناعي' : 'AI-generated suggestions'}</span>
               </span>
               <span className="text-slate-400">·</span>
               <span className="text-slate-300">
@@ -445,8 +396,8 @@ export const HomePage: React.FC<HomePageProps> = ({
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
               {lang === 'ar' 
-                ? 'اطرح أي سؤال برمجي أو معماري (اختيار أطر العمل، معمارية قواعد البيانات، أو تقدير النسخ التجريبية) واحصل على رد فوري ومباشر.'
-                : 'Ask any technical, programming, or software architecture question and receive an immediate, high-speed engineering answer.'}
+                ? 'يمكنك طرح أسئلة تقنية عامة. تحقّق من الاقتراحات قبل اعتماد قرارات مهمة.'
+                : 'Ask general technical questions. Verify suggestions before making important decisions.'}
             </p>
           </div>
 
@@ -454,7 +405,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             onClick={() => onNavigate('chat')}
             className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-[#070d19] bg-cyan-400 hover:bg-cyan-300 rounded-lg transition-all shadow-md whitespace-nowrap cursor-pointer shrink-0"
           >
-            <span>{lang === 'ar' ? 'بدء استشارة تقنية فائقة السرعة' : 'Start Fast Tech Consultation'}</span>
+            <span>{lang === 'ar' ? 'اسأل المساعد التقني' : 'Ask the technical assistant'}</span>
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />
           </button>
         </div>
@@ -477,7 +428,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
 
             {/* Score Card */}
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-900/90 border border-slate-800 shrink-0">
+            <div className="flex w-full max-w-full flex-col items-start gap-4 p-4 rounded-xl bg-slate-900/90 border border-slate-800 lg:w-auto sm:flex-row sm:flex-wrap sm:items-center">
               <div className="text-center">
                 <div className="text-3xl font-extrabold text-cyan-400 font-mono tabular-nums">
                   {reviewStats.totalCount ? reviewStats.average.toFixed(1) : '—'}
@@ -494,7 +445,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
               <button
                 onClick={onOpenAddReview}
-                className="px-4 py-2 text-xs font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 rounded-lg hover:from-cyan-300 hover:to-cyan-200 transition-all cursor-pointer whitespace-nowrap"
+                className="w-full px-4 py-2 text-xs font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 rounded-lg hover:from-cyan-300 hover:to-cyan-200 transition-all cursor-pointer sm:w-auto"
               >
                 {t.reviews.submitReview}
               </button>

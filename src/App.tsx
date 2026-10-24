@@ -5,7 +5,6 @@ import { Footer } from './components/Footer.tsx';
 import { ServiceDetailModal } from './components/ServiceDetailModal.tsx';
 import { ProjectDetailModal } from './components/ProjectDetailModal.tsx';
 import { AddReviewModal } from './components/AddReviewModal.tsx';
-import { SourceCodeExportModal } from './components/SourceCodeExportModal.tsx';
 
 import { HomePage } from './pages/HomePage.tsx';
 import { ServicesPage } from './pages/ServicesPage.tsx';
@@ -26,7 +25,6 @@ export default function App() {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isAddReviewOpen, setIsAddReviewOpen] = useState(false);
-  const [isSourceModalOpen, setIsSourceModalOpen] = useState(false);
   const [contactServiceId, setContactServiceId] = useState<string | undefined>(undefined);
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
 
@@ -75,7 +73,6 @@ export default function App() {
         onNavigate={handleNavigate}
         lang={lang}
         onToggleLang={toggleLanguage}
-        onOpenSourceModal={() => setIsSourceModalOpen(true)}
       />
 
       {/* Main Page Content */}
@@ -167,7 +164,7 @@ export default function App() {
               <Sparkles className="w-3.5 h-3.5" />
             </div>
             <span className="hidden sm:inline">
-              {lang === 'ar' ? 'استشارة تقنية فورية ⚡' : 'Fast Tech Advisor ⚡'}
+              {lang === 'ar' ? 'مساعد تقني بالذكاء الاصطناعي' : 'AI Technical Assistant'}
             </span>
           </button>
         </aside>
@@ -189,7 +186,6 @@ export default function App() {
       <Footer
         lang={lang}
         onNavigate={handleNavigate}
-        onOpenSourceModal={() => setIsSourceModalOpen(true)}
       />
 
       {/* Interactive Modal Dialogs */}
@@ -209,12 +205,6 @@ export default function App() {
       <AddReviewModal
         isOpen={isAddReviewOpen}
         onClose={() => setIsAddReviewOpen(false)}
-        lang={lang}
-      />
-
-      <SourceCodeExportModal
-        isOpen={isSourceModalOpen}
-        onClose={() => setIsSourceModalOpen(false)}
         lang={lang}
       />
 

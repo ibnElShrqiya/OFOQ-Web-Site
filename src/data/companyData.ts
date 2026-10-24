@@ -9,7 +9,7 @@ export const officeLocations: OfficeLocation[] = [
       ar: 'نعمل عن بُعد ونتواصل مع العملاء عبر الإنترنت. يمكنك التواصل معنا هاتفيًا أو عبر واتساب.'
     },
     phone: '+201101774594',
-    email: '',
+    email: 'harammasr54@gmail.com',
     hours: { en: 'Contact hours may vary', ar: 'قد تختلف أوقات الرد' },
     isHQ: true
   }

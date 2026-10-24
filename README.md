@@ -1,19 +1,12 @@
-# OFOQ Software Engineering & Digital Products
+OFOQ website updates
 
-React + TypeScript + Vite frontend with an Express API, Supabase PostgreSQL content store, and a protected admin panel at `/admin`. The admin panel manages content, private contact messages, and review moderation.
+These are complete replacement files prepared for:
+https://github.com/ibnElShrqiya/OFOQ-Web-Site
 
-## Quick start
+Copy each file to the matching repository path. Remove src/components/SourceCodeExportModal.tsx; its navigation links and server download endpoint are removed in the replacement files.
 
-1. Copy `.env.example` to `.env` and configure Supabase server-side keys.
-2. Run `supabase-schema.sql` in the Supabase SQL Editor.
-3. Follow `SUPABASE-SETUP.md` to create and promote the initial admin account.
-4. Install dependencies, then run the Express/Vite development server with `npm run dev`.
+The public contact email is harammasr54@gmail.com and appears in the footer, contact page, company data, and structured site metadata.
 
-The Supabase service-role key must remain server-side and must never be committed or exposed to the browser.
+The changes improve narrow-screen wrapping and spacing, remove the project source download flow, replace unsupported company claims and performance promises with neutral language, and identify the AI assessment as a self-check.
 
-New visitor reviews are saved as pending and only appear publicly after admin approval. See `SUPABASE-SETUP.md` for the database, admin account, and environment setup.
-
-
-## إعداد قاعدة بيانات OFOQ
-
-رابط Supabase مضبوط في `.env.example`: `https://gmdcappxvfghnqmbrbio.supabase.co`. اتبع `SUPABASE-SETUP.md` لتشغيل `supabase-schema.sql` وإنشاء حساب المدير. لا تضع المفتاح السري في الواجهة أو في Git.
+Direct GitHub updates could not be saved because the connected GitHub integration returned HTTP 403 (Resource not accessible by integration). No repository files were changed remotely.

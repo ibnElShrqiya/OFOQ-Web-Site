@@ -64,29 +64,29 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
   const getMaturityTier = (score: number) => {
     if (score >= 85) {
       return {
-        tier: lang === 'ar' ? 'حصن سيبراني منيع (Sovereign Cyber Fortress)' : 'Sovereign Cyber Fortress (Tier 1)',
+        tier: lang === 'ar' ? 'نتيجة ذاتية أعلى' : 'Higher self-reported score',
         desc: lang === 'ar'
-          ? 'تتمتع منشأتكم بضوابط دفاعية متطورة للغاية وبنية ثقة صفرية متماسكة، مع مراقبة استباقية مستمرة.'
-          : 'Your enterprise demonstrates advanced defensive posture with rigorous zero-trust controls and continuous active monitoring.',
+          ? 'تعكس النتيجة إجاباتك على هذا الفحص المختصر فقط، ولا تمثل تدقيقًا أمنيًا.'
+          : 'This score reflects your answers to this short self-check; it is not a security audit.',
         color: 'text-emerald-400',
         badgeColor: 'bg-emerald-950/50 border-emerald-500/40'
       };
     }
     if (score >= 60) {
       return {
-        tier: lang === 'ar' ? 'مستوى دفاعي متقدم مع فجوات حرجة' : 'Resilient Posture with Critical Gaps',
+        tier: lang === 'ar' ? 'مؤشرات تحتاج مراجعة' : 'Areas to review',
         desc: lang === 'ar'
-          ? 'تمتلكون أساسيات أمنية جيدة لكن توجد نقاط عمياء قد يستغلها المهاجمون لاختراق السحابة أو التحرك الجانبي.'
-          : 'You maintain solid security baselines, but key blind spots remain in telemetry coverage or identity federation.',
+          ? 'تعكس النتيجة إجاباتك على هذا الفحص المختصر فقط، ولا تمثل تدقيقًا أمنيًا.'
+          : 'This score reflects your answers to this short self-check; it is not a security audit.',
         color: 'text-cyan-400',
         badgeColor: 'bg-cyan-950/50 border-cyan-500/40'
       };
     }
     return {
-      tier: lang === 'ar' ? 'تعرض أمني حرج بحاجة لمعالجة عاجلة' : 'Critical Exposure – Urgent Remediation Required',
+      tier: lang === 'ar' ? 'مؤشرات تحتاج مراجعة' : 'Areas to review',
       desc: lang === 'ar'
-        ? 'الأنظمة الحالية تفتقر للتحقق المشفر المستمر أو المراقبة على مدار الساعة، مما يعرض المنشأة لمخاطر الفدية الفورية.'
-        : 'Your environment lacks continuous monitoring or immutable ransomware defenses, posing immediate business continuity risk.',
+        ? 'تعكس النتيجة إجاباتك على هذا الفحص المختصر فقط، ولا تمثل تدقيقًا أمنيًا.'
+        : 'This score reflects your answers to this short self-check; it is not a security audit.',
       color: 'text-rose-400',
       badgeColor: 'bg-rose-950/50 border-rose-500/40'
     };
@@ -113,7 +113,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
 
       {!isCompleted ? (
         /* Questionnaire Box */
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#091122] border border-cyan-500/25 shadow-2xl space-y-8">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-3xl bg-[#091122] border border-cyan-500/25 shadow-2xl space-y-8">
           
           {/* Progress bar */}
           <div>
@@ -198,7 +198,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
         </div>
       ) : (
         /* Results Report Box */
-        <div className="p-8 sm:p-10 rounded-3xl bg-[#091122] border border-cyan-500/30 shadow-2xl space-y-8 animate-in fade-in duration-300">
+        <div className="p-4 sm:p-8 lg:p-10 rounded-3xl bg-[#091122] border border-cyan-500/30 shadow-2xl space-y-8 animate-in fade-in duration-300">
           
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
             <div>

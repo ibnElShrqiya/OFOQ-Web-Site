@@ -41,7 +41,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
           <div
             key={service.id}
             id={service.id}
-            className="p-8 sm:p-10 rounded-3xl bg-[#091122] border border-slate-800 hover:border-cyan-500/30 transition-all duration-300"
+            className="p-4 sm:p-8 lg:p-10 rounded-3xl bg-[#091122] border border-slate-800 hover:border-cyan-500/30 transition-all duration-300"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               

@@ -165,7 +165,7 @@ export const AddReviewModal: React.FC<AddReviewModalProps> = ({
                 rows={4}
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Describe the engagement outcomes, penetration testing depth, SOC response SLA, or regulatory compliance support..."
+                placeholder="Share your feedback about the website or your experience with OFOQ..."
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-cyan-400 transition-colors resize-none"
               />
             </div>
