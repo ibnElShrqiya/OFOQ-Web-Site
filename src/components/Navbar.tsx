@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
 import { OfoqLogo } from './OfoqLogo.tsx';
-import { Menu, X, Globe, Sparkles } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -97,15 +97,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               }`}
             >
               {t.nav.assessment}
-            </button>
-            <button
-              onClick={() => handleNavClick('chat')}
-              className={`inline-flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 hover:text-cyan-400 cursor-pointer ${
-                currentPage === 'chat' ? 'text-cyan-400 font-semibold' : 'text-slate-300'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>{t.nav.chat}</span>
             </button>
           </nav>
 
@@ -202,15 +193,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {t.nav.assessment}
           </button>
-          <button
-            onClick={() => handleNavClick('chat')}
-            className={`w-full text-left rtl:text-right px-3 py-2 rounded-md text-sm font-medium flex items-center gap-2 ${
-              currentPage === 'chat' ? 'text-cyan-400 bg-cyan-950/30' : 'text-slate-300 hover:bg-slate-800'
-            }`}
-          >
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span>{t.nav.chat}</span>
-          </button>
+          
           <button
             onClick={() => handleNavClick('contact')}
             className={`w-full text-left rtl:text-right px-3 py-2 rounded-md text-sm font-medium ${

@@ -7,18 +7,9 @@ export type PageId =
   | 'library' 
   | 'about' 
   | 'reviews' 
-  | 'assessment'
-  | 'chat'
-  | 'contact' 
+  | 'assessment'  | 'contact' 
   | 'privacy' 
   | 'terms';
-
-export interface ChatMessage {
-  id: string;
-  role: 'user' | 'assistant';
-  content: string;
-  timestamp: string;
-}
 
 export interface ServiceItem {
   id: string;

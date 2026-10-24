@@ -11,7 +11,6 @@ import {
   ChevronDown, 
   Star, 
   CheckCircle2, 
-  Sparkles,
   Layers,
   Code2,
   Cpu,
@@ -90,14 +89,6 @@ export const HomePage: React.FC<HomePageProps> = ({
                   className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3.5 text-sm font-medium text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700 rounded-lg transition-colors cursor-pointer"
                 >
                   {t.hero.secondaryCta}
-                </button>
-
-                <button
-                  onClick={() => onNavigate('chat')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3.5 text-xs font-semibold text-cyan-300 hover:text-cyan-200 bg-cyan-950/40 hover:bg-cyan-950/60 border border-cyan-800/60 rounded-lg transition-colors cursor-pointer"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>{t.nav.chat}</span>
                 </button>
               </div>
 
@@ -377,40 +368,6 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       )}
 
-      {/* 7. GEMINI AI TECH ADVISOR SPOTLIGHT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-r from-[#09152b] to-[#0c1e3d] border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-cyan-300">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-[11px] font-semibold">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{lang === 'ar' ? 'اقتراحات مولّدة بالذكاء الاصطناعي' : 'AI-generated suggestions'}</span>
-              </span>
-              <span className="text-slate-400">·</span>
-              <span className="text-slate-300">
-                {lang === 'ar' ? 'مخصص للاستشارات البرمجية والتقنية فقط' : 'Strictly Technical Queries Only'}
-              </span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white">
-              {t.chat.title}
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
-              {lang === 'ar' 
-                ? 'يمكنك طرح أسئلة تقنية عامة. تحقّق من الاقتراحات قبل اعتماد قرارات مهمة.'
-                : 'Ask general technical questions. Verify suggestions before making important decisions.'}
-            </p>
-          </div>
-
-          <button
-            onClick={() => onNavigate('chat')}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-semibold text-[#070d19] bg-cyan-400 hover:bg-cyan-300 rounded-lg transition-all shadow-md whitespace-nowrap cursor-pointer shrink-0"
-          >
-            <span>{lang === 'ar' ? 'اسأل المساعد التقني' : 'Ask the technical assistant'}</span>
-            <ArrowRight className="w-4 h-4 rtl:rotate-180" />
-          </button>
-        </div>
-      </section>
-
       {/* 8. CLIENT REVIEWS & TESTIMONIALS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl bg-[#081020] border border-slate-800">
@@ -559,13 +516,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 {t.hero.primaryCta}
               </button>
-              <button
-                onClick={() => onNavigate('chat')}
-                className="px-6 py-3.5 text-xs font-medium text-slate-300 hover:text-white bg-slate-900 border border-slate-700 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                <span>{t.nav.chat}</span>
-              </button>
+              
             </div>
           </div>
         </div>

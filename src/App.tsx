@@ -12,12 +12,11 @@ import { ProjectsPage } from './pages/ProjectsPage.tsx';
 import { AboutPage } from './pages/AboutPage.tsx';
 import { ReviewsPage } from './pages/ReviewsPage.tsx';
 import { AssessmentPage } from './pages/AssessmentPage.tsx';
-import { ChatPage } from './pages/ChatPage.tsx';
 import { ContactPage } from './pages/ContactPage.tsx';
 import { PrivacyPage } from './pages/PrivacyPage.tsx';
 import { TermsPage } from './pages/TermsPage.tsx';
 import { LibraryPage } from './pages/LibraryPage.tsx';
-import { Sparkles, MessageSquare, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
@@ -129,13 +128,6 @@ export default function App() {
           />
         )}
 
-        {currentPage === 'chat' && (
-          <ChatPage
-            lang={lang}
-            onNavigateContact={() => handleNavigate('contact')}
-          />
-        )}
-
         {currentPage === 'contact' && (
           <ContactPage
             lang={lang}
@@ -151,24 +143,6 @@ export default function App() {
           <TermsPage lang={lang} />
         )}
       </main>
-
-      {/* Floating AI Consultant Quick Trigger (Visible when not on chat page) */}
-      {currentPage !== 'chat' && (
-        <aside aria-label="AI Tech Consultant Quick Action" className="fixed bottom-6 right-6 rtl:right-auto rtl:left-6 z-40">
-          <button
-            onClick={() => handleNavigate('chat')}
-            className="group flex items-center gap-2.5 px-4 py-3 bg-[#0a152d]/95 hover:bg-[#0d1d3d] border border-cyan-500/40 hover:border-cyan-400 rounded-full shadow-[0_4px_18px_-8px_rgba(6,182,212,0.24)] text-xs font-semibold text-white transition-all cursor-pointer backdrop-blur"
-            title={lang === 'ar' ? 'استشر مستشار أفق التقني الذكي' : 'Consult OFOQ Tech Architect AI'}
-          >
-            <div className="w-6 h-6 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shrink-0">
-              <Sparkles className="w-3.5 h-3.5" />
-            </div>
-            <span className="hidden sm:inline">
-              {lang === 'ar' ? 'مساعد تقني بالذكاء الاصطناعي' : 'AI Technical Assistant'}
-            </span>
-          </button>
-        </aside>
-      )}
 
       {/* Floating WhatsApp contact action */}
       <a

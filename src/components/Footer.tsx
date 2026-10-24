@@ -2,7 +2,7 @@ import React from 'react';
 import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
 import { OfoqLogo } from './OfoqLogo.tsx';
-import { Sparkles, PhoneCall, MessageCircle, Mail } from 'lucide-react';
+import { PhoneCall, MessageCircle, Mail } from 'lucide-react';
 
 interface FooterProps {
   lang: Language;
@@ -89,15 +89,6 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-cyan-400 transition-colors text-left rtl:text-right"
                 >
                   {t.nav.reviews}
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => { onNavigate('chat'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className="hover:text-cyan-400 transition-colors text-left rtl:text-right flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>{t.nav.chat}</span>
                 </button>
               </li>
               <li>

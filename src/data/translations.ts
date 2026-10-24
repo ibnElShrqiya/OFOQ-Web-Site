@@ -9,7 +9,6 @@ export const translations = {
       about: 'About Team',
       reviews: 'Reviews',
       assessment: 'Stack Evaluator',
-      chat: 'AI Tech Consultant',
       contact: 'Contact Us',
       ctaAudit: 'Start Your Project',
       ctaEmergency: 'Talk to an Engineer',
@@ -131,19 +130,6 @@ export const translations = {
       actionHeading: 'Recommended Engineering Roadmap',
       scheduleConsultation: 'Discuss Results With An OFOQ Lead Engineer'
     },
-    chat: {
-      kicker: 'AI Technical Advisor',
-      title: 'Consult OFOQ Tech Architect AI',
-      subtitle: 'Ask technical questions about tech stack choices, MVP scoping, database architectures, or how OFOQ can build your software.',
-      placeholder: 'Ask about tech stacks, Flutter vs React Native, MVP timelines, or design systems...',
-      sendBtn: 'Send',
-      thinking: 'OFOQ Architect is analyzing your question...',
-      sample1: 'What tech stack do you recommend for a real-time marketplace MVP?',
-      sample2: 'Should we choose Flutter or React Native for our mobile app?',
-      sample3: 'How long does it take OFOQ to design and build an enterprise web portal?',
-      clearChat: 'Clear History',
-      disclaimer: 'AI-generated suggestions may be inaccurate. Verify important technical decisions.'
-    },
     contact: {
       kicker: 'Get in Touch',
       title: 'Let’s Build Something Exceptional Together',
@@ -190,7 +176,6 @@ export const translations = {
       about: 'عن الفريق',
       reviews: 'آراء العملاء',
       assessment: 'مقياس البنية التقنية',
-      chat: 'المستشار التقني الذكي',
       contact: 'ابدأ مشروعك',
       ctaAudit: 'ابدأ مشروعك معنا',
       ctaEmergency: 'تحدث مع مهندس',
@@ -311,19 +296,6 @@ export const translations = {
       scoreLabel: 'النتيجة الإجمالية: {score} من 100',
       actionHeading: 'خارطة طريق التطوير الموصى بها',
       scheduleConsultation: 'مناقشة النتائج مع كبير مهندسي أفق'
-    },
-    chat: {
-      kicker: 'استشارة تقنية ذكية',
-      title: 'استشر مستشار أفق التقني الذكي',
-      subtitle: 'اطرح أي سؤال تقني حول اختيار أطر العمل، وتقدير تكلفة وإطلاق النسخة التجريبية (MVP)، وتصميم الواجهات البرمجية.',
-      placeholder: 'اسأل عن التقنيات الأنسب لمشروعك، الفرق بين Flutter و React Native، أو نظم التصميم...',
-      sendBtn: 'إرسال',
-      thinking: 'مستشار أفق يحلل متطلبات مشروعك...',
-      sample1: 'ما هي التقنيات الأنسب لبناء منصة تجارة إلكترونية سريعة؟',
-      sample2: 'هل نختار Flutter أم React Native لتطبيق الجوال؟',
-      sample3: 'كم يستغرق فريق أفق لتطوير وإطلاق نسخة تجريبية MVP؟',
-      clearChat: 'مسح المحادثة',
-      disclaimer: 'قد تكون اقتراحات الذكاء الاصطناعي غير دقيقة. تحقّق من القرارات التقنية المهمة.'
     },
     contact: {
       kicker: 'تواصل معنا',
