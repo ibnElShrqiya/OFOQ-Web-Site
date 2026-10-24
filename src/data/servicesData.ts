@@ -9,7 +9,7 @@ export const servicesData: ServiceItem[] = [
       ar: 'تطوير تطبيقات الويب والمنصات السحابية الحديثة'
     },
     shortDescription: {
-      en: 'Web applications and cloud platforms scoped to each project's requirements.',
+      en: 'Web applications and cloud platforms scoped to project requirements.',
       ar: 'تطوير تطبيقات ويب وتقنيات سحابية وفق متطلبات ونطاق العمل المتفق عليه.'
     },
     fullDescription: {
