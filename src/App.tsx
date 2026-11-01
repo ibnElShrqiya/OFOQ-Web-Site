@@ -32,7 +32,10 @@ const PAGE_IDS = new Set<PageId>([
 ]);
 
 function pageFromPath(): PageId {
-  const pathname = window.location.pathname.replace(/\\/+$/, '') || '/';
+  let pathname = window.location.pathname;
+  while (pathname.length > 1 && pathname.endsWith('/')) {
+    pathname = pathname.slice(0, -1);
+  }
   const page = pathname === '/' ? 'home' : pathname.slice(1);
   return PAGE_IDS.has(page as PageId) ? (page as PageId) : 'home';
 }
