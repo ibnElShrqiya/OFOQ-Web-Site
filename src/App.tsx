@@ -18,12 +18,47 @@ import { TermsPage } from './pages/TermsPage.tsx';
 import { LibraryPage } from './pages/LibraryPage.tsx';
 import { MessageCircle } from 'lucide-react';
 
+const PAGE_PATHS: Record<PageId, string> = {
+  home: '/',
+  services: '/services',
+  projects: '/projects',
+  library: '/library',
+  about: '/about',
+  reviews: '/reviews',
+  assessment: '/assessment',
+  contact: '/contact',
+  privacy: '/privacy',
+  terms: '/terms',
+};
+
+const PAGE_BY_PATH = Object.fromEntries(
+  Object.entries(PAGE_PATHS).map(([page, path]) => [path, page as PageId]),
+) as Record<string, PageId>;
+
+const getPageFromPath = (pathname: string): PageId => {
+  const path = pathname.replace(/\\/+$/, '') || '/';
+  return PAGE_BY_PATH[path] ?? 'home';
+};
+
+const PAGE_LABELS: Record<PageId, { ar: string; en: string }> = {
+  home: { ar: 'الرئيسية', en: 'Home' },
+  services: { ar: 'خدماتنا', en: 'Services' },
+  projects: { ar: 'مشاريعنا', en: 'Projects' },
+  library: { ar: 'المكتبة', en: 'Library' },
+  about: { ar: 'عن الفريق', en: 'About the team' },
+  reviews: { ar: 'آراء العملاء', en: 'Client reviews' },
+  assessment: { ar: 'تقييم التقنية', en: 'Technology assessment' },
+  contact: { ar: 'تواصل معنا', en: 'Contact us' },
+  privacy: { ar: 'سياسة الخصوصية', en: 'Privacy policy' },
+  terms: { ar: 'الشروط والأحكام', en: 'Terms and conditions' },
+};
+
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
     try { return localStorage.getItem('ofoq_language') === 'en' ? 'en' : 'ar'; }
     catch { return 'ar'; }
   });
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(() => getPageFromPath(window.location.pathname));
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isAddReviewOpen, setIsAddReviewOpen] = useState(false);
@@ -46,30 +81,46 @@ export default function App() {
       .catch(() => setReviews([]));
   }, []);
 
-  // Update HTML dir and lang attributes on language toggle
+  // Keep locale, route, and share metadata aligned with the current page.
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
-    document.title = lang === 'ar'
-      ? 'أُفُق | هندسة البرمجيات والأمن السيبراني'
-      : 'OFOQ | Software Engineering & Cybersecurity';
+    const pageLabel = PAGE_LABELS[currentPage][lang];
+    document.title = currentPage === 'home'
+      ? (lang === 'ar' ? 'أُفُق | هندسة البرمجيات والأمن السيبراني' : 'OFOQ | Software Engineering & Cybersecurity')
+      : (lang === 'ar' ? `${pageLabel} | أُفُق` : `${pageLabel} | OFOQ`);
     const description = lang === 'ar'
-      ? 'فريق أُفُق يطوّر البرمجيات والمنتجات الرقمية ويقدّم خدمات الأمن السيبراني. تواصل معنا لمناقشة مشروعك.'
-      : 'OFOQ builds software and digital products and provides cybersecurity services. Contact us to discuss your project.';
+      ? `صفحة ${pageLabel} من موقع أُفُق لهندسة البرمجيات والأمن السيبراني.`
+      : `${pageLabel} at OFOQ, a software engineering and cybersecurity team.`;
     document.querySelector('meta[name="description"]')?.setAttribute('content', description);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', document.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
     try { localStorage.setItem('ofoq_language', lang); } catch { /* Storage can be unavailable in private browsing. */ }
-  }, [lang]);
+  }, [lang, currentPage]);
+
+  useEffect(() => {
+    const syncPageWithLocation = () => {
+      setCurrentPage(getPageFromPath(window.location.pathname));
+      setSelectedService(null);
+      setSelectedProject(null);
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+    window.addEventListener('popstate', syncPageWithLocation);
+    return () => window.removeEventListener('popstate', syncPageWithLocation);
+  }, []);
 
   const toggleLanguage = () => {
     setLang((prev) => (prev === 'en' ? 'ar' : 'en'));
   };
 
   const handleNavigate = (page: PageId) => {
+    const path = PAGE_PATHS[page];
+    if (window.location.pathname !== path) window.history.pushState({ page }, '', path);
     setCurrentPage(page);
+    setSelectedService(null);
+    setSelectedProject(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
