@@ -50,6 +50,17 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
+    document.title = lang === 'ar'
+      ? 'أُفُق | هندسة البرمجيات والأمن السيبراني'
+      : 'OFOQ | Software Engineering & Cybersecurity';
+    const description = lang === 'ar'
+      ? 'فريق أُفُق يطوّر البرمجيات والمنتجات الرقمية ويقدّم خدمات الأمن السيبراني. تواصل معنا لمناقشة مشروعك.'
+      : 'OFOQ builds software and digital products and provides cybersecurity services. Contact us to discuss your project.';
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', document.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
     try { localStorage.setItem('ofoq_language', lang); } catch { /* Storage can be unavailable in private browsing. */ }
   }, [lang]);
 
