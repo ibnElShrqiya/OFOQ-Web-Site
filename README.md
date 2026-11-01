@@ -1,14 +1,40 @@
-OFOQ website updates
+# أُفُق | OFOQ
 
-These are complete replacement files prepared for:
-https://github.com/ibnElShrqiya/OFOQ-Web-Site
+موقع فريق أُفُق لعرض خدمات هندسة البرمجيات والمنتجات الرقمية والأمن السيبراني. العربية هي اللغة الافتراضية، ويمكن التبديل إلى الإنجليزية من واجهة الموقع.
 
-Copy each file to the matching repository path. Remove src/components/SourceCodeExportModal.tsx; its navigation links and server download endpoint are removed in the replacement files.
+## التقنيات
 
-The public contact email is harammasr54@gmail.com and appears in the footer, contact page, company data, and structured site metadata.
+- React وTypeScript وVite
+- Express لواجهات الخادم
+- Supabase للمصادقة ومحتوى الموقع ورسائل التواصل
 
-The changes improve narrow-screen wrapping and spacing, remove the project source download flow, replace unsupported company claims and performance promises with neutral language, and identify the AI assessment as a self-check.
+## التشغيل محليًا
 
-Direct GitHub updates could not be saved because the connected GitHub integration returned HTTP 403 (Resource not accessible by integration). No repository files were changed remotely.
+يتطلب المشروع إصدار Node.js حديثًا يدعم Vite 8.
 
-The AI assistant has been removed from the UI, navigation, homepage, API server, and package dependencies. Remove src/pages/ChatPage.tsx from the repository.
+1. ثبّت الاعتماديات: `npm install`
+2. انسخ `.env.example` إلى `.env` واملأ القيم المطلوبة محليًا.
+3. شغّل بيئة التطوير: `npm run dev`
+
+لإنشاء نسخة الإنتاج والتحقق من الأنواع:
+
+```sh
+npm run lint
+npm run build
+```
+
+لتشغيل خادم الإنتاج على Linux بعد البناء: `npm start`.
+
+## متغيرات البيئة
+
+يحتاج الخادم إلى `SUPABASE_URL` و`SUPABASE_ANON_KEY` و`SUPABASE_SERVICE_ROLE_KEY`. يبقى مفتاح الخدمة سرًا على الخادم فقط؛ لا تضفه إلى كود المتصفح أو ملفات تبدأ بـ `VITE_`، ولا ترفع ملف `.env` إلى Git.
+
+`GEMINI_API_KEY` اختياري، ويُستخدم فقط إذا كانت ميزة المستشار الذكي مفعّلة.
+
+## الفحوص المتاحة
+
+يعرّف `package.json` حاليًا أمري `lint` و`build` ولا يعرّف مشغّل اختبارات آلية. شغّل الأمرين أعلاه بعد التغييرات، وأضف اختبارات عند إدخال إطار اختبار للمشروع.
+
+## الأمان
+
+راجع [SECURITY.md](SECURITY.md) لإرشادات إعداد الخادم والتعامل مع مفاتيح Supabase.

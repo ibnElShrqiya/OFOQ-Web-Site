@@ -125,7 +125,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 text-slate-400 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors cursor-pointer"
-              aria-label="Open mobile navigation"
+              aria-label={mobileMenuOpen ? (lang === 'ar' ? 'إغلاق القائمة' : 'Close navigation') : (lang === 'ar' ? 'فتح القائمة' : 'Open navigation')}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-navigation-menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -136,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-slate-800 bg-[#070d19] px-4 pt-3 pb-5 space-y-2">
+        <div id="mobile-navigation-menu" className="lg:hidden border-b border-slate-800 bg-[#070d19] px-4 pt-3 pb-5 space-y-2">
           <button
             onClick={() => handleNavClick('home')}
             className={`w-full text-left rtl:text-right px-3 py-2 rounded-md text-sm font-medium ${
