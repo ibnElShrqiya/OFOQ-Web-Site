@@ -30,7 +30,9 @@ export async function onRequestGet({ env }) {
       {
         headers: {
           apikey: anonKey,
-          Authorization: `Bearer ${anonKey}`,
+          ...(anonKey.startsWith('eyJ')
+            ? { Authorization: `Bearer ${anonKey}` }
+            : {}),
           Accept: 'application/json',
         },
       }
