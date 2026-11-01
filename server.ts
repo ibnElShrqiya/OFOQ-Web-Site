@@ -26,12 +26,18 @@ app.use((_req, res, next) => {
     "form-action 'self'",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "script-src 'self' 'unsafe-inline'",
+    process.env.NODE_ENV === 'production' ? "script-src 'self' 'sha256-ChXcT636bBu/BcblRJs3AAoO1TtBHm2ndaX/jqLF848='" : "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https:",
     "connect-src 'self'",
   ].join('; '));
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  next();
+});
+app.use('/api/admin', (_req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Pragma', 'no-cache');
   next();
 });
 app.use(express.json({ limit: '32kb' }));
@@ -78,6 +84,7 @@ async function supabaseRequest(endpoint: string, options: { method?: string; tok
   const response = await fetch(`${SUPABASE_URL}${endpoint}`, {
     method: options.method || 'GET', headers,
     ...(options.body !== undefined ? { body: JSON.stringify(options.body) } : {}),
+    signal: AbortSignal.timeout(15_000),
   });
   const raw = await response.text();
   let data: any = null;
