@@ -25,3 +25,8 @@ This repository's Express application in server.ts is not run by a static Pages 
 This Pages project serves the public content and approved reviews through Pages Functions at `/api/content` and `/api/reviews`. In **Workers & Pages → ofoq-web-site → Settings → Variables and Secrets**, configure `SUPABASE_URL` and `SUPABASE_ANON_KEY` for both Production and Preview. Use the Supabase project URL and its publishable/anon key. The key is public by design and is restricted by the database's row-level security policies. Never add `SUPABASE_SERVICE_ROLE_KEY` to Pages or browser code.
 
 Pages Functions handle public reads. The Express server remains in the repository for server-side writes and administration and must run on a Node.js host if those API features are used.
+
+
+## Site page routes
+
+Each public section has a direct URL: `/`, `/services`, `/projects`, `/library`, `/about`, `/reviews`, `/assessment`, `/contact`, `/privacy`, and `/terms`. Navigation updates browser history, so refresh, back, and forward keep the selected page. Cloudflare Pages serves the SPA entry point for these paths when no top-level `404.html` is present.
