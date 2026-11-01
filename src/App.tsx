@@ -19,7 +19,10 @@ import { LibraryPage } from './pages/LibraryPage.tsx';
 import { MessageCircle } from 'lucide-react';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>(() => {
+    try { return localStorage.getItem('ofoq_language') === 'en' ? 'en' : 'ar'; }
+    catch { return 'ar'; }
+  });
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
@@ -47,6 +50,7 @@ export default function App() {
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
+    try { localStorage.setItem('ofoq_language', lang); } catch { /* Storage can be unavailable in private browsing. */ }
   }, [lang]);
 
   const toggleLanguage = () => {
