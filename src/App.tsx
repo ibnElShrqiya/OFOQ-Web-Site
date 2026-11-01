@@ -18,9 +18,28 @@ import { TermsPage } from './pages/TermsPage.tsx';
 import { LibraryPage } from './pages/LibraryPage.tsx';
 import { MessageCircle } from 'lucide-react';
 
+const PAGE_IDS = new Set<PageId>([
+  'home',
+  'services',
+  'projects',
+  'library',
+  'about',
+  'reviews',
+  'assessment',
+  'contact',
+  'privacy',
+  'terms',
+]);
+
+function pageFromPath(): PageId {
+  const pathname = window.location.pathname.replace(/\\/+$/, '') || '/';
+  const page = pathname === '/' ? 'home' : pathname.slice(1);
+  return PAGE_IDS.has(page as PageId) ? (page as PageId) : 'home';
+}
+
 export default function App() {
   const [lang, setLang] = useState<Language>('ar');
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(() => pageFromPath());
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isAddReviewOpen, setIsAddReviewOpen] = useState(false);
@@ -43,6 +62,16 @@ export default function App() {
       .catch(() => setReviews([]));
   }, []);
 
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(pageFromPath());
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   // Update HTML dir and lang attributes on language toggle
   useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -54,6 +83,10 @@ export default function App() {
   };
 
   const handleNavigate = (page: PageId) => {
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ page }, '', targetPath);
+    }
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
