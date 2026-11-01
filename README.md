@@ -18,3 +18,10 @@ The AI assistant has been removed from the UI, navigation, homepage, API server,
 The Vite source entry in index.html is intended for the Vite build; it must not be published directly. Run `npm run build` and configure Cloudflare Pages with the repository root as the project root, `npm run pages:build` as the build command, and `dist` as the build output directory. The Wrangler Pages setting in wrangler.toml also declares `./dist`.
 
 This repository's Express application in server.ts is not run by a static Pages deployment. Keep Express and its Supabase-backed API on the existing Node.js host, and configure any required API routing/origin there. Do not put Supabase service-role credentials in Vite variables or browser code; keep them only in the Express host's server-side environment.
+
+
+## Cloudflare Pages database reads
+
+This Pages project serves the public content and approved reviews through Pages Functions at `/api/content` and `/api/reviews`. In **Workers & Pages → ofoq-web-site → Settings → Variables and Secrets**, configure `SUPABASE_URL` and `SUPABASE_ANON_KEY` for both Production and Preview. Use the Supabase project URL and its publishable/anon key. The key is public by design and is restricted by the database's row-level security policies. Never add `SUPABASE_SERVICE_ROLE_KEY` to Pages or browser code.
+
+Pages Functions handle public reads. The Express server remains in the repository for server-side writes and administration and must run on a Node.js host if those API features are used.

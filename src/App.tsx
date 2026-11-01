@@ -19,7 +19,7 @@ import { LibraryPage } from './pages/LibraryPage.tsx';
 import { MessageCircle } from 'lucide-react';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>('ar');
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
