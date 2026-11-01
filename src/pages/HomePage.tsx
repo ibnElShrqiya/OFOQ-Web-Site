@@ -104,35 +104,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 2. TECH STACK & TOOLS BAR */}
-      <section className="border-y border-slate-800/80 bg-[#060a14] py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs font-mono uppercase tracking-wider text-slate-400 mb-6">
-            {t.trust.label}
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.react}
-            </div>
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.typescript}
-            </div>
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.flutter}
-            </div>
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.node}
-            </div>
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.cloud}
-            </div>
-            <div className="py-2.5 px-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs font-semibold text-slate-300">
-              {t.trust.docker}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 3. CORE SERVICES SHOWCASE (Bento-Grid) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
