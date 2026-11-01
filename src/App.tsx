@@ -36,7 +36,7 @@ const PAGE_BY_PATH = Object.fromEntries(
 ) as Record<string, PageId>;
 
 const getPageFromPath = (pathname: string): PageId => {
-  const path = pathname.replace(/\\/+$/, '') || '/';
+  const path = pathname.replace(/\/+$/, '') || '/';
   return PAGE_BY_PATH[path] ?? 'home';
 };
 
