@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Language, PageId, ServiceItem, ProjectItem, ReviewItem } from '../types.ts';
 import { translations } from '../data/translations.ts';
+import { GlassObjectScene } from '../components/ReferenceScenes.tsx';
 import { servicesData } from '../data/servicesData.ts';
 import { projectsData } from '../data/projectsData.ts';
 import { calculateReviewStats } from '../data/storage.ts';
@@ -51,13 +52,7 @@ export const HomePage: React.FC<HomePageProps> = ({ lang, onNavigate, onSelectSe
               <button className="ofoq-ghost-button" onClick={() => onNavigate('projects')}>{isArabic ? 'اكتشف أعمالنا' : 'Explore our work'} <ArrowUpRight size={16}/></button>
             </div>
           </div>
-          <div className="ofoq-hero-art" aria-label={isArabic ? 'تجسيد بصري رقمي ثلاثي الأبعاد' : 'Abstract digital 3D visual'} role="img">
-            <div className="ofoq-art-halo"/><div className="ofoq-art-ring ring-a"/><div className="ofoq-art-ring ring-b"/>
-            <div className="ofoq-art-glass"><div className="ofoq-art-core"/></div>
-            <div className="ofoq-art-orbit orbit-a"/><div className="ofoq-art-orbit orbit-b"/>
-            <span className="ofoq-art-coordinate coordinate-a">24° 27' N / 54° 22' E</span>
-            <span className="ofoq-art-coordinate coordinate-b">OFOQ / DIGITAL STUDIO</span>
-          </div>
+          <div className="ofoq-hero-art"><GlassObjectScene lang={lang}/></div>
           <div className="ofoq-hero-bottom">
             <span>{isArabic ? 'فكرة واضحة. تنفيذ متقن. أثر يدوم.' : 'Clear thinking. Crafted execution. Lasting impact.'}</span>
             <button onClick={() => document.getElementById('ofoq-services')?.scrollIntoView({behavior:'smooth'})}>{isArabic ? 'اكتشف المزيد' : 'Discover more'} <ArrowDownLeft size={16}/></button>
