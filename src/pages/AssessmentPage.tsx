@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
+import { AnalyticsFrame } from '../components/ReferenceScenes.tsx';
 import { assessmentQuestions } from '../data/assessmentData.ts';
 import { Activity, ShieldCheck, AlertTriangle, ArrowRight, RotateCcw, CheckCircle2 } from 'lucide-react';
 
@@ -97,6 +98,8 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
   return (
     <div className="ofoq-page ofoq-assessment-page max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
       
+      <AnalyticsFrame lang={lang} completed={Object.keys(selectedAnswers).length} total={totalQuestions} score={isCompleted ? totalScore : undefined} />
+
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto">
         <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold flex items-center justify-center gap-1.5 mb-1">
