@@ -643,3 +643,121 @@ html[dir=rtl] .ofoq-page h1{letter-spacing:0!important;line-height:1.35!importan
  .ofoq-contact-page>div:first-child h1,.ofoq-contact-page>div:first-child p {margin-inline:auto}
  .ofoq-contact-page>div:nth-of-type(2) {width:100%}
 }
+
+
+/* Refined customer feedback experience and cinematic hero depth. */
+@keyframes ofoqAuroraDrift {
+  0%,100% { transform:translate3d(0,0,0) scale(1); opacity:.62 }
+  50% { transform:translate3d(-2%,1.5%,0) scale(1.06); opacity:.9 }
+}
+@keyframes ofoqReviewEnter {
+  from { opacity:0; transform:translateY(16px) }
+  to { opacity:1; transform:translateY(0) }
+}
+.ofoq-nav-cta { white-space:nowrap }
+@media(max-width:1250px) {
+  .ofoq-desktop-nav { gap:1px; padding:4px }
+  .ofoq-desktop-nav button { padding:8px 8px; font-size:11px }
+}
+@media(max-width:1150px) { .ofoq-nav-cta { display:none } }
+.ofoq-hero-content { z-index:1 }
+.ofoq-hero-aurora {
+  position:absolute; inset:-18% -10% 6%; z-index:0; pointer-events:none;
+  background:radial-gradient(ellipse at 68% 46%,rgba(0,193,255,.2),transparent 32%),
+    radial-gradient(ellipse at 84% 62%,rgba(25,87,227,.18),transparent 34%),
+    radial-gradient(ellipse at 50% 100%,rgba(0,113,174,.15),transparent 45%);
+  filter:blur(28px); animation:ofoqAuroraDrift 14s ease-in-out infinite;
+}
+.ofoq-hero-orbit {
+  position:absolute; z-index:0; pointer-events:none; width:clamp(380px,54vw,760px);
+  aspect-ratio:1; top:50%; right:clamp(-190px,3vw,52px); transform:translateY(-50%) rotate(-22deg);
+  border:1px solid rgba(105,218,255,.16); border-radius:50%;
+  box-shadow:0 0 0 34px rgba(31,174,235,.025),0 0 0 92px rgba(31,174,235,.018),inset 0 0 70px rgba(18,143,220,.07);
+  mask-image:linear-gradient(90deg,transparent 8%,#000 43%,#000 92%,transparent);
+}
+.ofoq-hero-art { filter:drop-shadow(0 28px 65px rgba(0,139,224,.2)) }
+.ofoq-glass-scene { filter:drop-shadow(0 0 28px rgba(38,190,255,.12)) }
+.ofoq-reviews-page { position:relative; isolation:isolate; max-width:1320px; margin:0 auto; padding:clamp(2rem,5vw,4.75rem) clamp(1rem,4vw,3.5rem) 5rem }
+.ofoq-reviews-hero {
+  position:relative; overflow:hidden; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(270px,.72fr);
+  align-items:center; gap:clamp(2rem,6vw,6rem); min-height:390px; padding:clamp(2rem,6vw,5.5rem);
+  border:1px solid rgba(114,190,235,.18); border-radius:30px;
+  background:radial-gradient(ellipse at 84% 20%,rgba(0,196,236,.19),transparent 42%),linear-gradient(135deg,rgba(11,31,56,.98),rgba(4,12,25,.94) 68%);
+  box-shadow:0 28px 90px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.05);
+}
+.ofoq-reviews-heading { position:relative; z-index:1; max-width:700px }
+.ofoq-reviews-kicker { display:inline-flex; align-items:center; gap:9px; color:#67e8f9; font-size:.72rem; font-weight:750; letter-spacing:.12em }
+.ofoq-reviews-heading h1 { margin:1.2rem 0 .8rem; max-width:13ch; color:#f2f8ff; font-size:clamp(2.5rem,5.7vw,5rem); font-weight:850; line-height:1.18; letter-spacing:-.045em; text-wrap:balance }
+html[dir="rtl"] .ofoq-reviews-heading h1 { letter-spacing:-.025em }
+.ofoq-reviews-heading>p { max-width:600px; color:#a9bbd0; font-size:1rem; line-height:1.9 }
+.ofoq-reviews-submit { display:inline-flex; align-items:center; gap:10px; margin-top:1.6rem; padding:13px 19px; border:1px solid rgba(95,229,250,.28); border-radius:999px; color:#061522; background:linear-gradient(110deg,#60e4f2,#77aaff); font-size:.82rem; font-weight:800; box-shadow:0 9px 28px rgba(0,190,231,.2); transition:transform .25s,box-shadow .25s }
+.ofoq-reviews-submit:hover { transform:translateY(-2px); box-shadow:0 14px 34px rgba(0,190,231,.3) }
+.ofoq-reviews-score-card { position:relative; z-index:1; padding:1.7rem; border:1px solid rgba(120,205,241,.2); border-radius:22px; background:linear-gradient(145deg,rgba(13,38,65,.86),rgba(5,18,34,.84)); box-shadow:0 20px 60px rgba(0,0,0,.24),inset 0 1px rgba(255,255,255,.055); backdrop-filter:blur(12px) }
+.ofoq-reviews-score-label,.ofoq-reviews-score-card>p { color:#a9bbd0; font-size:.78rem }
+.ofoq-reviews-score { margin:.35rem 0; color:#f4fbff; font-size:4rem; font-weight:850; letter-spacing:-.06em; line-height:1.1; font-variant-numeric:tabular-nums }
+.ofoq-reviews-stars,.ofoq-review-card-stars { display:flex; align-items:center; gap:4px; color:#52667c }
+.ofoq-reviews-stars .is-filled,.ofoq-reviews-distribution-row .is-filled,.ofoq-review-card-stars .is-filled { fill:#5de1f1; color:#5de1f1 }
+.ofoq-reviews-score-card>p { margin:.6rem 0 .25rem }
+.ofoq-reviews-score-card>strong { color:#c9f8ff; font-size:.78rem }
+.ofoq-reviews-distribution { display:grid; gap:9px; margin-top:1.35rem; padding-top:1.15rem; border-top:1px solid rgba(140,183,215,.13) }
+.ofoq-reviews-distribution-row { display:flex; align-items:center; gap:8px; color:#b5c6d7; font-size:.72rem }
+.ofoq-reviews-distribution-row>span { width:12px; text-align:center }
+.ofoq-reviews-distribution-row>div { flex:1; height:6px; overflow:hidden; border-radius:99px; background:rgba(130,161,189,.17) }
+.ofoq-reviews-distribution-row>div i { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#2ebfdc,#6ce6f2); transition:width .65s cubic-bezier(.2,.8,.2,1) }
+.ofoq-reviews-distribution-row small { width:22px; color:#8096aa; text-align:end; font-variant-numeric:tabular-nums }
+.ofoq-reviews-orbit { position:absolute; width:420px; aspect-ratio:1; inset-inline-start:-190px; top:-230px; border:1px solid rgba(64,192,237,.16); border-radius:50%; opacity:.65; pointer-events:none }
+.ofoq-reviews-orbit span { position:absolute; inset:13%; border:1px solid rgba(64,192,237,.11); border-radius:50% }
+.ofoq-reviews-orbit span:nth-child(2) { inset:27% }
+.ofoq-reviews-orbit span:nth-child(3) { inset:41%; background:radial-gradient(circle,rgba(55,203,242,.18),transparent 70%) }
+.ofoq-reviews-listing { padding-top:clamp(3rem,7vw,6rem) }
+.ofoq-reviews-toolbar { display:flex; align-items:end; justify-content:space-between; gap:1.5rem; margin-bottom:1.6rem }
+.ofoq-reviews-toolbar h2 { margin:.65rem 0 0; color:#f1f7ff; font-size:clamp(1.6rem,3vw,2.4rem); font-weight:800 }
+.ofoq-reviews-filters { display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:center; gap:7px }
+.ofoq-reviews-filters>span { display:inline-flex; align-items:center; gap:6px; margin-inline-end:5px; color:#99adc2; font-size:.72rem }
+.ofoq-reviews-filters button { display:inline-flex; align-items:center; gap:5px; min-height:35px; padding:7px 10px; border:1px solid rgba(119,159,193,.16); border-radius:999px; color:#aebed0; background:rgba(9,21,37,.75); font-size:.72rem; transition:background .2s,border-color .2s,color .2s }
+.ofoq-reviews-filters button:hover,.ofoq-reviews-filters button.selected { border-color:rgba(65,214,238,.48); color:#d6fbff; background:rgba(16,148,185,.16) }
+.ofoq-reviews-filters button small { color:#7993a9; font-size:.65rem }
+.ofoq-reviews-filters .is-filled { fill:#5de1f1; color:#5de1f1 }
+.ofoq-reviews-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+.ofoq-review-card { min-width:0; padding:clamp(1.2rem,2.5vw,2rem); border:1px solid rgba(120,170,206,.15); border-radius:22px; background:linear-gradient(145deg,rgba(9,25,44,.92),rgba(5,13,26,.94)); box-shadow:0 12px 38px rgba(0,0,0,.14); transition:transform .28s,border-color .28s,box-shadow .28s; animation:ofoqReviewEnter .65s both }
+.ofoq-review-card:hover { transform:translateY(-4px); border-color:rgba(64,210,235,.36); box-shadow:0 22px 48px rgba(0,0,0,.23),0 0 26px rgba(0,166,211,.07) }
+.ofoq-review-card-top { display:flex; justify-content:space-between; align-items:center; color:#63829c }
+.ofoq-review-card-top time { color:#72879b; font-size:.7rem; font-variant-numeric:tabular-nums }
+.ofoq-review-quote { color:#4bcfe8 }
+.ofoq-review-card-stars { margin-top:1.2rem }
+.ofoq-review-comment { min-height:110px; margin:1rem 0 1.5rem; color:#d3dfeb; font-size:.93rem; line-height:1.95; text-wrap:pretty }
+.ofoq-review-author { display:flex; align-items:center; gap:11px; padding-top:1rem; border-top:1px solid rgba(120,160,190,.13) }
+.ofoq-review-avatar { display:grid; flex:none; place-items:center; width:42px; height:42px; border:1px solid rgba(87,216,238,.3); border-radius:50%; color:#8deaf6; background:linear-gradient(145deg,rgba(20,164,195,.2),rgba(19,47,77,.6)); font-weight:800 }
+.ofoq-review-author-copy { display:grid; min-width:0; flex:1; gap:3px }
+.ofoq-review-author-copy strong { display:flex; flex-wrap:wrap; align-items:center; gap:7px; color:#f0f6fc; font-size:.8rem }
+.ofoq-review-author-copy>span { color:#66d9eb; font-size:.72rem }
+.ofoq-review-author-copy small { overflow:hidden; color:#7f95aa; font-size:.67rem; text-overflow:ellipsis; white-space:nowrap }
+.ofoq-review-verified { display:inline-flex; align-items:center; gap:4px; color:#84e2c4; font-size:.61rem; font-weight:650 }
+.ofoq-review-author>button { display:inline-flex; flex:none; align-items:center; gap:6px; padding:8px 9px; border:1px solid rgba(119,159,193,.16); border-radius:999px; color:#8ca5ba; background:rgba(6,15,28,.72); font-size:.68rem; font-variant-numeric:tabular-nums; transition:color .2s,border-color .2s }
+.ofoq-review-author>button:hover { color:#71e3f0; border-color:rgba(71,209,232,.38) }
+.ofoq-reviews-empty { display:grid; justify-items:center; padding:4rem 1rem; border:1px solid rgba(120,170,206,.15); border-radius:22px; background:linear-gradient(145deg,rgba(9,25,44,.82),rgba(5,13,26,.9)); text-align:center }
+.ofoq-reviews-empty>span { display:grid; place-items:center; width:52px; height:52px; border:1px solid rgba(77,211,235,.25); border-radius:50%; color:#68dff0; background:rgba(15,130,164,.14) }
+.ofoq-reviews-empty h3 { margin:1rem 0 .35rem; color:#eef6ff; font-size:1.15rem; font-weight:750 }
+.ofoq-reviews-empty p { max-width:440px; color:#99adc0; font-size:.85rem; line-height:1.8 }
+@media(max-width:900px) {
+  .ofoq-reviews-hero { grid-template-columns:minmax(0,1fr) minmax(250px,.72fr); gap:2rem; padding:2.5rem }
+  .ofoq-reviews-filters { justify-content:flex-start }
+}
+@media(max-width:700px) {
+  .ofoq-reviews-hero { grid-template-columns:1fr; min-height:0; padding:1.5rem; border-radius:22px }
+  .ofoq-reviews-heading h1 { max-width:none; font-size:clamp(2.1rem,10vw,3.15rem) }
+  .ofoq-reviews-score-card { max-width:440px; width:100%; padding:1.25rem }
+  .ofoq-reviews-toolbar { align-items:flex-start; flex-direction:column }
+  .ofoq-reviews-filters { justify-content:flex-start }
+  .ofoq-reviews-filters>span { flex-basis:100% }
+  .ofoq-reviews-grid { grid-template-columns:1fr }
+  .ofoq-review-comment { min-height:0 }
+  .ofoq-hero-orbit { opacity:.35; right:-185px }
+}
+@media(max-width:850px) {
+  .ofoq-hero-orbit { width:570px; right:-185px }
+}
+@media(prefers-reduced-motion:reduce) {
+  .ofoq-hero-aurora { animation:none }
+  .ofoq-review-card { animation:none; transition:none }
+}

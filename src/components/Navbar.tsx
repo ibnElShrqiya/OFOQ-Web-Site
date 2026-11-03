@@ -20,6 +20,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, lang, o
     { page: 'services', label: t.nav.services },
     { page: 'projects', label: t.nav.projects },
     { page: 'library', label: lang === 'ar' ? 'المكتبة التقنية' : 'Tech Library' },
+    { page: 'reviews', label: t.nav.reviews },
+    { page: 'assessment', label: t.nav.assessment },
     { page: 'contact', label: t.nav.contact },
   ];
   const handleNavClick = (page: PageId) => {
