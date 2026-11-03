@@ -153,7 +153,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
 
   return (
     <div
-      className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 md:py-16 lg:px-8"
+      className="ofoq-page ofoq-projects-page mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 md:py-16 lg:px-8"
       dir={isAr ? 'rtl' : 'ltr'}
     >
       {/* Page header */}
