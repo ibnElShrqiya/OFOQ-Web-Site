@@ -51,6 +51,137 @@
   }
 }
 
+/* OFOQ cinematic motion system: layered light, orbital geometry and tactile cards. */
+.ofoq-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.ofoq-hero-scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 900px;
+}
+
+.ofoq-hero-scene::before,
+.ofoq-hero-scene::after {
+  content: "";
+  position: absolute;
+  width: min(58vw, 46rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.ofoq-hero-scene::before {
+  top: -42%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(6,182,212,.13), rgba(14,165,233,.045) 34%, transparent 68%);
+  animation: ofoqAtmosphere 12s ease-in-out infinite alternate;
+}
+
+.ofoq-hero-scene::after {
+  bottom: -70%;
+  left: -20%;
+  background: radial-gradient(circle, rgba(37,99,235,.12), transparent 68%);
+  animation: ofoqAtmosphere 16s ease-in-out infinite alternate-reverse;
+}
+
+.ofoq-orbit {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: clamp(15rem, 38vw, 35rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(103,232,249,.13);
+  border-radius: 50%;
+  transform: translateY(-50%) rotateX(67deg) rotateZ(-24deg);
+  box-shadow: 0 0 70px rgba(6,182,212,.045), inset 0 0 50px rgba(6,182,212,.035);
+}
+
+.ofoq-orbit-one { animation: ofoqOrbit 34s linear infinite; }
+.ofoq-orbit-two {
+  width: clamp(11rem, 29vw, 26rem);
+  right: calc(10% + clamp(2rem, 4.5vw, 4rem));
+  border-style: dashed;
+  border-color: rgba(56,189,248,.17);
+  transform: translateY(-50%) rotateX(67deg) rotateZ(32deg);
+  animation: ofoqOrbitReverse 42s linear infinite;
+}
+
+.ofoq-orbit-core {
+  position: absolute;
+  top: 50%;
+  right: calc(10% + clamp(7.5rem, 19vw, 17.5rem));
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #67e8f9;
+  box-shadow: 0 0 12px 4px rgba(34,211,238,.42), 0 0 50px 14px rgba(6,182,212,.14);
+  animation: ofoqPulse 3.5s ease-in-out infinite;
+}
+
+.ofoq-light-beam {
+  position: absolute;
+  top: -30%;
+  right: 22%;
+  width: 1px;
+  height: 160%;
+  background: linear-gradient(transparent, rgba(103,232,249,.25), transparent);
+  transform: rotate(28deg);
+  filter: blur(1px);
+  opacity: .7;
+}
+
+.ofoq-scene-label {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2rem;
+  color: rgba(148,163,184,.38);
+  font: 500 9px/1 var(--font-mono);
+  letter-spacing: .24em;
+  direction: ltr;
+}
+
+.ofoq-interactive-card {
+  transform: translateZ(0);
+  transition: transform .45s cubic-bezier(.2,.75,.25,1), border-color .35s ease, box-shadow .45s ease, background-color .35s ease;
+}
+.ofoq-interactive-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(135deg, rgba(34,211,238,.075), transparent 45%, rgba(59,130,246,.045));
+  transition: opacity .4s ease;
+}
+.ofoq-interactive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -34px rgba(6,182,212,.32);
+}
+.ofoq-interactive-card:hover::before { opacity: 1; }
+
+@keyframes ofoqAtmosphere {
+  from { transform: translate3d(-2%, 1%, 0) scale(.94); opacity: .65; }
+  to { transform: translate3d(3%, -2%, 0) scale(1.08); opacity: 1; }
+}
+@keyframes ofoqOrbit { from { transform: translateY(-50%) rotateX(67deg) rotateZ(-24deg); } to { transform: translateY(-50%) rotateX(67deg) rotateZ(336deg); } }
+@keyframes ofoqOrbitReverse { from { transform: translateY(-50%) rotateX(67deg) rotateZ(32deg); } to { transform: translateY(-50%) rotateX(67deg) rotateZ(-328deg); } }
+@keyframes ofoqPulse { 0%,100% { opacity: .65; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.2); } }
+
+@media (hover: none) { .ofoq-interactive-card:hover { transform: none; } }
+@media (max-width: 640px) {
+  .ofoq-orbit { right: -25%; opacity: .5; }
+  .ofoq-orbit-two { right: -15%; }
+  .ofoq-orbit-core { right: 20%; }
+  .ofoq-light-beam, .ofoq-scene-label { display: none; }
+}
+
 /* Cinematic framing with restrained motion across the public site. */
 .page-reveal {
   animation: pageReveal .55s cubic-bezier(.2,.75,.25,1) both;
@@ -171,7 +302,9 @@ header.sticky {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .page-reveal, .ofoq-hero > div > div > div:first-child, .ofoq-hero > div > div > div:last-child { animation: none !important; }
+  .page-reveal, .ofoq-hero > div > div > div:first-child, .ofoq-hero > div > div > div:last-child,
+  .ofoq-hero-scene::before, .ofoq-hero-scene::after, .ofoq-orbit-one, .ofoq-orbit-two, .ofoq-orbit-core { animation: none !important; }
+  .ofoq-interactive-card { transition: none !important; }
 }
 
 @media (max-width: 640px) {

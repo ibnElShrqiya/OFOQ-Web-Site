@@ -45,6 +45,13 @@ export const HomePage: React.FC<HomePageProps> = ({
       
       {/* 1. HERO SECTION */}
       <section className="ofoq-hero relative overflow-hidden">
+        <div className="ofoq-hero-scene" aria-hidden="true">
+          <span className="ofoq-orbit ofoq-orbit-one" />
+          <span className="ofoq-orbit ofoq-orbit-two" />
+          <span className="ofoq-orbit-core" />
+          <span className="ofoq-light-beam" />
+          <span className="ofoq-scene-label">OFOQ / DIGITAL ENGINEERING</span>
+        </div>
         {/* Ambient background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.15),transparent_70%)] pointer-events-none" />
 
@@ -133,7 +140,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           {servicesData.map((service, idx) => (
             <div
               key={service.id}
-              className="group relative p-6 sm:p-7 rounded-2xl bg-[#091122] border border-slate-800/90 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_6px_18px_-10px_rgba(6,182,212,0.16)]"
+              className="ofoq-interactive-card group relative p-6 sm:p-7 rounded-2xl bg-[#091122] border border-slate-800/90 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between hover:shadow-[0_6px_18px_-10px_rgba(6,182,212,0.16)]"
             >
               <div>
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-4 font-mono">
@@ -244,25 +251,25 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
+          <div className="ofoq-interactive-card p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
             <span className="text-2xl font-bold font-mono text-cyan-400">{t.workflow.step1Num}.</span>
             <h3 className="text-base font-bold text-white">{t.workflow.step1Title}</h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{t.workflow.step1Desc}</p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
+          <div className="ofoq-interactive-card p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
             <span className="text-2xl font-bold font-mono text-cyan-400">{t.workflow.step2Num}.</span>
             <h3 className="text-base font-bold text-white">{t.workflow.step2Title}</h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{t.workflow.step2Desc}</p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
+          <div className="ofoq-interactive-card p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
             <span className="text-2xl font-bold font-mono text-cyan-400">{t.workflow.step3Num}.</span>
             <h3 className="text-base font-bold text-white">{t.workflow.step3Title}</h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{t.workflow.step3Desc}</p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
+          <div className="ofoq-interactive-card p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
             <span className="text-2xl font-bold font-mono text-cyan-400">{t.workflow.step4Num}.</span>
             <h3 className="text-base font-bold text-white">{t.workflow.step4Title}</h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{t.workflow.step4Desc}</p>

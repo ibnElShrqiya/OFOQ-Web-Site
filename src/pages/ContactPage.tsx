@@ -146,8 +146,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-300'
                       }`}
                     >
-                      <div className="font-semibold text-white">1–3 Months</div>
-                      <div className="text-[10px] text-slate-400 mt-0.5">Planning &amp; Roadmapping</div>
+                      <div className="font-semibold text-white">{lang === 'ar' ? 'من شهر إلى 3 أشهر' : '1–3 Months'}</div>
+                      <div className="text-[10px] text-slate-400 mt-0.5">{lang === 'ar' ? 'تخطيط وتجهيز' : 'Planning &amp; Roadmapping'}</div>
                     </button>
 
                     <button
@@ -159,8 +159,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           : 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-300'
                       }`}
                     >
-                      <div className="font-semibold text-white">2–4 Weeks</div>
-                      <div className="text-[10px] text-slate-400 mt-0.5">Immediate Need</div>
+                      <div className="font-semibold text-white">{lang === 'ar' ? 'من أسبوعين إلى 4 أسابيع' : '2–4 Weeks'}</div>
+                      <div className="text-[10px] text-slate-400 mt-0.5">{lang === 'ar' ? 'احتياج قريب' : 'Immediate Need'}</div>
                     </button>
 
                     <button
@@ -174,9 +174,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                     >
                       <div className="font-semibold text-cyan-300 flex items-center gap-1">
                         <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                        <span>Ready to Start</span>
+                        <span>{lang === 'ar' ? 'جاهزون للبدء' : 'Ready to Start'}</span>
                       </div>
-                      <div className="text-[10px] text-cyan-400/80 mt-0.5">Urgent Sprint Kickoff</div>
+                      <div className="text-[10px] text-cyan-400/80 mt-0.5">{lang === 'ar' ? 'بدء التنفيذ في أقرب وقت' : 'Urgent Sprint Kickoff'}</div>
                     </button>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Abdullah Al-Zahrani"
+                      placeholder={lang === 'ar' ? 'مثال: عبد الله محمد' : 'e.g. Abdullah Al-Zahrani'}
                       className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700/80 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
@@ -206,7 +206,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="e.g. a.zahrani@company.com"
+                      placeholder={lang === 'ar' ? 'name@example.com' : 'e.g. a.zahrani@company.com'}
                       className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700/80 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>
@@ -237,7 +237,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                       required
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      placeholder="e.g. Fintech Startup / Retail Brand"
+                      placeholder={lang === 'ar' ? 'مثال: شركة تقنية أو متجر إلكتروني' : 'e.g. Fintech Startup / Retail Brand'}
                       className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700/80 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
                     />
                   </div>

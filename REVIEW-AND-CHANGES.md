@@ -65,3 +65,12 @@ No live Supabase connection has been verified from this archive. Run the SQL and
 **Not yet verified as production-ready.** The Supabase project cannot be confirmed from this source archive alone: no production secrets were supplied and the schema has not been proven applied to the live project. Apply `supabase-schema.sql`, set server environment variables, create/promote the real admin user, and verify `/api/health`, contact submissions, review moderation, and admin access on the deployed server. Run `npm install`, `npm run lint`, and `npm run build` before publishing.
 
 - Installation/build validation attempt: `npm install --ignore-scripts --no-audit --no-fund` timed out in this environment. TypeScript parser scan found no syntax diagnostics, but full type checking and Vite production build remain blocked by unavailable dependencies.
+
+## 2026-11-03 — Direct refinement pass on supplied archive
+
+- Added a layered cinematic hero scene using CSS-only ambient light, orbital geometry, and a subtle animated core; no new runtime dependency was introduced.
+- Added restrained hover lift and light treatment to service and methodology cards.
+- Extended reduced-motion handling to all newly added decorative animations and disabled hover lift on touch-first devices.
+- Localized the contact page's timeline options and sample placeholders into Arabic when Arabic is selected; English remains available through the language toggle.
+- Preserved existing routes, API handlers, Supabase schema, and database policy files. No database changes or migrations were run.
+- Validation in this editing environment: TypeScript/TSX transpilation syntax scan completed; full `tsc`, dependency installation, and Vite production build could not be completed because dependencies were absent and `npm install` timed out. Live Supabase and production behavior remain unverified.
