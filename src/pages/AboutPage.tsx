@@ -3,7 +3,7 @@ import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
 import { CompanyTimeline } from '../components/ReferenceScenes.tsx';
 import { leadershipTeam, officeLocations } from '../data/companyData.ts';
-import { Code2, Palette, Layers, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
+import { Code2, Palette, Layers, ClipboardCheck, MapPin, CheckCircle2 } from 'lucide-react';
 
 interface AboutPageProps {
   lang: Language;
@@ -72,7 +72,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
         </div>
 
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
-          <Sparkles className="w-6 h-6 text-cyan-400" />
+          <ClipboardCheck className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
             {lang === 'ar' ? 'التسليم' : 'Handover'}
           </h3>
