@@ -13,6 +13,7 @@ import {
 
 import { Language, PageId, ProjectItem } from '../types.ts';
 import { translations } from '../data/translations.ts';
+import { PortfolioNodeMap } from '../components/ReferenceScenes.tsx';
 import { projectsData } from '../data/projectsData.ts';
 
 interface ProjectsPageProps {
@@ -156,6 +157,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({
       className="ofoq-page ofoq-projects-page mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 md:py-16 lg:px-8"
       dir={isAr ? 'rtl' : 'ltr'}
     >
+      <PortfolioNodeMap lang={lang} onNavigate={onNavigate} />
+
       {/* Page header */}
       <div className="max-w-3xl">
         <span className="font-mono text-xs font-semibold uppercase tracking-wider text-cyan-400">
