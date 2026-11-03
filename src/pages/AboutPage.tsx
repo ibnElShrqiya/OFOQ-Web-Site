@@ -1,6 +1,7 @@
 import React from 'react';
 import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
+import { CompanyTimeline } from '../components/ReferenceScenes.tsx';
 import { leadershipTeam, officeLocations } from '../data/companyData.ts';
 import { Code2, Palette, Layers, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
 
@@ -29,6 +30,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
             : 'OFOQ works on software and digital products. We discuss each project’s requirements, scope, timeline, and handover before agreeing on an approach.'}
         </p>
       </div>
+
+      <CompanyTimeline lang={lang} />
 
       {/* 4 Core Pillars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
