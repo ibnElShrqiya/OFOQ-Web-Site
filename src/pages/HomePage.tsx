@@ -44,7 +44,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-20 md:space-y-24 pb-20">
       
       {/* 1. HERO SECTION */}
-      <section className="relative pt-12 md:pt-20 overflow-hidden">
+      <section className="ofoq-hero relative overflow-hidden">
         {/* Ambient background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.15),transparent_70%)] pointer-events-none" />
 

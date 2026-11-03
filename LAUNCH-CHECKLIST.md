@@ -14,7 +14,7 @@
 2. Create the real admin user in Supabase Auth and promote only that user to `admin` using the documented SQL in `SUPABASE-SETUP.md`.
 3. Configure `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` as server-side environment secrets on the chosen Node.js host. Never put the service-role/secret key in frontend variables or Git.
 4. Configure `GEMINI_API_KEY` only if the AI consultant is to be enabled; verify model availability and set usage limits.
-5. Install dependencies and run `npm run lint` and `npm run build`. These could not be completed in this environment because dependency installation timed out.
+5. Source validation completed for this archive: `bun run lint` and `bun run build` both pass. Re-run them on the deployment host after installing dependencies there.
 6. After deployment, open `/api/health`; it must return HTTP 200 with `status: ok` and `database: connected`. A 503 means the database is not ready.
 7. Submit a contact form, confirm the message appears in `/admin`, submit a review and confirm it remains pending, approve it, then verify it appears publicly. Test that a non-admin cannot open admin APIs.
 8. Confirm the actual production domain, HTTPS, redirects, backup policy, error monitoring, and privacy/terms text. Have the final legal text reviewed for the jurisdictions where OFOQ operates.

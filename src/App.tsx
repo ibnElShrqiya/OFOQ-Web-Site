@@ -111,7 +111,7 @@ export default function App() {
       />
 
       {/* Main Page Content */}
-      <main className="flex-1">
+      <main key={currentPage} className="page-reveal flex-1">
         {currentPage === 'home' && (
           <HomePage
             lang={lang}

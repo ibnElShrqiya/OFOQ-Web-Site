@@ -1,5 +1,17 @@
 # OFOQ — Change & Security Review
 
+## 2026-11-03 — Cinematic Arabic-first refresh
+
+- Added a restrained cinematic frame and grid treatment to the homepage hero, layered ambient lighting, and short page/hero entrance motion.
+- Preserved the existing navy/cyan identity and made all new movement respect `prefers-reduced-motion`.
+- Tuned the public header treatment and updated the document, Open Graph, and Twitter titles/descriptions for Arabic-first sharing.
+- Added expanded/collapsed state, a control relationship, and localized labels to the mobile navigation button.
+- Added compact mobile navigation to the authenticated admin workspace; desktop sidebar remains available at larger breakpoints.
+- Kept all existing routes, page components, Express endpoints, Supabase tables, and RLS policies intact. No schema SQL was run or changed.
+- Fixed two existing TypeScript errors: imported `existsSync` in the server and made the admin editor's optional `required` field type-safe.
+- Validation: `bun run lint` and `bun run build` pass. The production JavaScript bundle is 416.01 kB (118.19 kB gzip); CSS is 69.97 kB (11.85 kB gzip). Direct-route browser checks passed for all 10 public/admin paths, and the mobile navigation opened with all links exposed.
+- Live Supabase, contact/review writes, protected admin requests, deployment health, and actual deployment status remain unverified because this archive contains no `.env` or production credentials and no Git metadata.
+
 ## Visual refinements
 - Preserved the existing navy/cyan identity, page structure, content, and interactions.
 - Softened the strongest cyan glow/shadow utilities so CTAs and cards feel more restrained.

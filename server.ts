@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { existsSync } from 'node:fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer as createViteServer } from 'vite';
