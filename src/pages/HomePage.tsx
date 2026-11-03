@@ -3,7 +3,6 @@ import { Language, PageId, ServiceItem, ProjectItem, ReviewItem } from '../types
 import { translations } from '../data/translations.ts';
 import { servicesData } from '../data/servicesData.ts';
 import { projectsData } from '../data/projectsData.ts';
-import { faqData } from '../data/faqData.ts';
 import { calculateReviewStats } from '../data/storage.ts';
 import { ArrowDownLeft, ArrowLeft, ArrowRight, ArrowUpLeft, ArrowUpRight, CheckCircle2, Code2, Cpu, Globe2, Layers3, Palette, ShieldCheck, Star } from 'lucide-react';
 
@@ -31,7 +30,6 @@ const projectFilters = ['الكل', 'تطوير الويب', 'تطبيقات ا�
 export const HomePage: React.FC<HomePageProps> = ({ lang, onNavigate, onSelectService, onSelectProject, onOpenAddReview, reviews }) => {
   const t = translations[lang];
   const copy = heroWords[lang];
-  const [openFaqId, setOpenFaqId] = useState<string | null>('faq-01');
   const [activeFilter, setActiveFilter] = useState('الكل');
   const reviewStats = calculateReviewStats(reviews);
   const isArabic = lang === 'ar';
