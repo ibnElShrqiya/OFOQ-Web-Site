@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({
   const t = translations[lang];
 
   return (
-    <footer className="w-full bg-[#050913] border-t border-slate-800/80 text-slate-400 text-sm">
+    <footer className="ofoq-footer w-full bg-[#050913] border-t border-slate-800/80 text-slate-400 text-sm">
       {/* Upper Footer: Strategic Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
