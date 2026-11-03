@@ -95,7 +95,7 @@ export const AssessmentPage: React.FC<AssessmentPageProps> = ({
   const currentTier = getMaturityTier(totalScore);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
+    <div className="ofoq-page ofoq-assessment-page max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
       
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto">
