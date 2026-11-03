@@ -58,8 +58,6 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, lang, o
       {mobileMenuOpen && (
         <nav className="ofoq-mobile-nav" aria-label={lang === 'ar' ? 'القائمة' : 'Navigation'}>
           {links.map(({ page, label }) => <button key={page} onClick={() => handleNavClick(page)}>{label}</button>)}
-          <button onClick={() => handleNavClick('reviews')}>{t.nav.reviews}</button>
-          <button onClick={() => handleNavClick('assessment')}>{t.nav.assessment}</button>
         </nav>
       )}
     </header>
