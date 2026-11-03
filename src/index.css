@@ -627,3 +627,19 @@ html[dir=rtl] .ofoq-page h1{letter-spacing:0!important;line-height:1.35!importan
 @media(prefers-reduced-motion:reduce) {
  .glass-scene-aura,.glass-cube,.timeline-orbit,.node-map-lines path,.analytics-chart-grid i,.radar-ring::before,.ofoq-services-page>div:first-child::after {animation:none!important}
 }
+
+
+/* Reference composition refinements */
+.ofoq-hero-art .ofoq-glass-scene { width:100%; min-height:clamp(25rem,42vw,36rem); }
+.ofoq-hero-art { min-width:0; }
+.ofoq-contact-page { display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);align-items:start;gap:2rem clamp(2rem,5vw,5rem); }
+.ofoq-contact-page>div:first-child { grid-column:1;grid-row:1;position:sticky;top:7rem;text-align:start;align-items:start; }
+.ofoq-contact-page>div:nth-of-type(2) { grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr; }
+.ofoq-contact-page>div:first-child h1 { margin-inline:0; }
+.ofoq-contact-page>div:first-child p { margin-inline:0; }
+@media(max-width:900px) {
+ .ofoq-contact-page {display:flex;flex-direction:column;gap:1.5rem}
+ .ofoq-contact-page>div:first-child {position:relative;top:auto;text-align:center;align-items:center}
+ .ofoq-contact-page>div:first-child h1,.ofoq-contact-page>div:first-child p {margin-inline:auto}
+ .ofoq-contact-page>div:nth-of-type(2) {width:100%}
+}
