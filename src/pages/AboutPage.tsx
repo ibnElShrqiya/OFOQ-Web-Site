@@ -1,8 +1,9 @@
 import React from 'react';
 import { Language, PageId } from '../types.ts';
 import { translations } from '../data/translations.ts';
+import { CompanyTimeline } from '../components/ReferenceScenes.tsx';
 import { leadershipTeam, officeLocations } from '../data/companyData.ts';
-import { Code2, Palette, Layers, Sparkles, MapPin, CheckCircle2 } from 'lucide-react';
+import { Code2, Palette, Layers, ClipboardCheck, MapPin, CheckCircle2 } from 'lucide-react';
 
 interface AboutPageProps {
   lang: Language;
@@ -13,7 +14,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
   const t = translations[lang];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
+    <div className="ofoq-page ofoq-about-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
       
       {/* Header */}
       <div className="max-w-3xl">
@@ -29,6 +30,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
             : 'OFOQ works on software and digital products. We discuss each project’s requirements, scope, timeline, and handover before agreeing on an approach.'}
         </p>
       </div>
+
+      <CompanyTimeline lang={lang} />
 
       {/* 4 Core Pillars Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -69,7 +72,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ lang, onNavigate }) => {
         </div>
 
         <div className="p-6 rounded-2xl bg-[#091122] border border-slate-800 space-y-3">
-          <Sparkles className="w-6 h-6 text-cyan-400" />
+          <ClipboardCheck className="w-6 h-6 text-cyan-400" />
           <h3 className="text-base font-bold text-white">
             {lang === 'ar' ? 'التسليم' : 'Handover'}
           </h3>

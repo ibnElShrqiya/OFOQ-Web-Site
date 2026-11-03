@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Language, ReviewItem } from '../types.ts';
 import { translations } from '../data/translations.ts';
 import { calculateReviewStats } from '../data/storage.ts';
-import { Star, ShieldCheck, ThumbsUp, Filter, Plus } from 'lucide-react';
+import { Filter, Plus, Quote, ShieldCheck, Sparkles, Star, ThumbsUp } from 'lucide-react';
 
 interface ReviewsPageProps {
   lang: Language;
@@ -10,197 +10,87 @@ interface ReviewsPageProps {
   onOpenAddReview: () => void;
 }
 
-export const ReviewsPage: React.FC<ReviewsPageProps> = ({
-  lang,
-  reviews,
-  onOpenAddReview
-}) => {
+export const ReviewsPage: React.FC<ReviewsPageProps> = ({ lang, reviews, onOpenAddReview }) => {
   const t = translations[lang];
+  const isArabic = lang === 'ar';
   const [selectedRating, setSelectedRating] = useState<number | 'all'>('all');
   const [helpfulMap, setHelpfulMap] = useState<Record<string, number>>({});
-
   const stats = calculateReviewStats(reviews);
-
-  const filteredReviews = reviews.filter((r) => {
-    if (selectedRating === 'all') return true;
-    return r.rating === selectedRating;
-  });
+  const filteredReviews = reviews.filter(review => selectedRating === 'all' || review.rating === selectedRating);
 
   const handleHelpfulClick = (id: string, currentCount: number) => {
-    setHelpfulMap((prev) => ({
-      ...prev,
-      [id]: (prev[id] ?? currentCount) + 1
-    }));
+    setHelpfulMap(previous => ({ ...previous, [id]: (previous[id] ?? currentCount) + 1 }));
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-12">
-      
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div className="max-w-2xl">
-          <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">
-            {t.reviews.kicker}
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1">
-            {t.reviews.title}
-          </h1>
-          <p className="mt-2 text-sm text-slate-300 leading-relaxed">
-            {t.reviews.subtitle}
-          </p>
+    <main className="ofoq-page ofoq-reviews-page" dir={isArabic ? 'rtl' : 'ltr'}>
+      <section className="ofoq-reviews-hero">
+        <div className="ofoq-reviews-heading">
+          <span className="ofoq-reviews-kicker"><Sparkles size={15} />{t.reviews.kicker}</span>
+          <h1>{t.reviews.title}</h1>
+          <p>{t.reviews.subtitle}</p>
+          <button className="ofoq-reviews-submit" onClick={onOpenAddReview}>
+            <Plus size={17} /><span>{t.reviews.submitReview}</span>
+          </button>
         </div>
-
-        <button
-          onClick={onOpenAddReview}
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-[#070d19] bg-gradient-to-r from-cyan-400 to-cyan-300 hover:from-cyan-300 hover:to-cyan-200 rounded-lg transition-all shadow-md cursor-pointer whitespace-nowrap self-start md:self-auto"
-        >
-          <Plus className="w-4 h-4" />
-          <span>{t.reviews.submitReview}</span>
-        </button>
-      </div>
-
-      {/* Score Summary & Distribution Card */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-[#091122] border border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        
-        {/* Left: Big Score */}
-        <div className="md:col-span-4 text-center md:text-left rtl:md:text-right border-b md:border-b-0 md:border-r rtl:md:border-l rtl:md:border-r-0 border-slate-800 pb-6 md:pb-0 md:pr-8 rtl:md:pl-8">
-          <div className="text-5xl font-extrabold font-mono text-cyan-400 tabular-nums">
-            {stats.totalCount ? stats.average.toFixed(1) : '—'}
+        <div className="ofoq-reviews-score-card">
+          <span className="ofoq-reviews-score-label">{t.reviews.overallRating}</span>
+          <div className="ofoq-reviews-score">{stats.totalCount ? stats.average.toFixed(1) : '—'}</div>
+          <div className="ofoq-reviews-stars" aria-label={isArabic ? `متوسط ${stats.average.toFixed(1)} من 5` : `Average ${stats.average.toFixed(1)} out of 5`}>
+            {[1, 2, 3, 4, 5].map(star => <Star key={star} size={18} className={star <= Math.round(stats.average) ? 'is-filled' : ''} />)}
           </div>
-          <div className="flex items-center justify-center md:justify-start rtl:md:justify-end gap-1 my-2">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className={`w-5 h-5 ${
-                  i < Math.round(stats.average) ? 'fill-cyan-400 text-cyan-400' : 'fill-transparent text-slate-700'
-                }`}
-              />
-            ))}
+          <p>{t.reviews.basedOn}</p>
+          <strong>{stats.totalCount} {isArabic ? 'تقييم منشور' : 'published reviews'}</strong>
+          <div className="ofoq-reviews-distribution" aria-label={isArabic ? 'توزيع التقييمات' : 'Rating distribution'}>
+            {[5, 4, 3, 2, 1].map(star => {
+              const count = stats.distribution[star as 1 | 2 | 3 | 4 | 5] || 0;
+              const percent = stats.totalCount ? (count / stats.totalCount) * 100 : 0;
+              return <div className="ofoq-reviews-distribution-row" key={star}>
+                <span>{star}</span><Star size={12} className="is-filled"/><div><i style={{ width: `${percent}%` }}/></div><small>{count}</small>
+              </div>;
+            })}
           </div>
-          <p className="text-xs text-slate-400 font-medium">{t.reviews.basedOn}</p>
-          <p className="text-xs font-mono text-cyan-300 mt-1">{stats.totalCount} {lang === 'ar' ? 'تقييم منشور' : 'published reviews'}</p>
+        </div>
+        <div className="ofoq-reviews-orbit" aria-hidden="true"><span/><span/><span/></div>
+      </section>
+
+      <section className="ofoq-reviews-listing" aria-labelledby="ofoq-reviews-list-title">
+        <div className="ofoq-reviews-toolbar">
+          <div><span className="ofoq-reviews-kicker"><Quote size={14}/>{isArabic ? 'تجارب حقيقية' : 'REAL EXPERIENCES'}</span><h2 id="ofoq-reviews-list-title">{isArabic ? 'ما يقوله عملاؤنا' : 'What our clients say'}</h2></div>
+          <div className="ofoq-reviews-filters" role="group" aria-label={t.reviews.filterRating}>
+            <span><Filter size={14}/>{t.reviews.filterRating}</span>
+            <button type="button" aria-pressed={selectedRating === 'all'} className={selectedRating === 'all' ? 'selected' : ''} onClick={() => setSelectedRating('all')}>{t.reviews.allRatings} <small>{stats.totalCount}</small></button>
+            {[5, 4, 3, 2, 1].map(star => <button type="button" key={star} aria-pressed={selectedRating === star} className={selectedRating === star ? 'selected' : ''} onClick={() => setSelectedRating(star)}><Star size={13} className="is-filled"/>{star}<small>{stats.distribution[star as 1 | 2 | 3 | 4 | 5] || 0}</small></button>)}
+          </div>
         </div>
 
-        {/* Right: Star Rating Distribution Histogram */}
-        <div className="md:col-span-8 space-y-2">
-          {[5, 4, 3, 2, 1].map((stars) => {
-            const count = stats.distribution[stars as 1|2|3|4|5] || 0;
-            const percentage = stats.totalCount > 0 ? (count / stats.totalCount) * 100 : 0;
-            return (
-              <div key={stars} className="flex items-center gap-3 text-xs font-mono text-slate-400">
-                <span className="w-12 shrink-0">{stars} {lang === 'ar' ? 'نجوم' : 'stars'}</span>
-                <div className="flex-1 h-2 rounded-full bg-slate-800 overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-cyan-500 to-cyan-300 rounded-full transition-all duration-500"
-                    style={{ width: `${percentage}%` }}
-                  />
+        {filteredReviews.length === 0 ? (
+          <div className="ofoq-reviews-empty"><span><Quote size={24}/></span><h3>{isArabic ? (reviews.length ? 'لا توجد تقييمات بهذا التصنيف' : 'لا توجد تقييمات منشورة حتى الآن') : (reviews.length ? 'No reviews in this rating' : 'No published reviews yet')}</h3><p>{isArabic ? (reviews.length ? 'اختر تصنيفًا آخر لمشاهدة آراء العملاء.' : 'يمكنك إرسال تقييمك، وسيظهر هنا بعد مراجعته واعتماده.') : (reviews.length ? 'Choose another rating to see more feedback.' : 'Submit a review and it will appear after approval.')}</p></div>
+        ) : (
+          <div className="ofoq-reviews-grid">
+            {filteredReviews.map((review, index) => {
+              const currentHelpful = helpfulMap[review.id] ?? review.helpfulCount;
+              return <article key={review.id} className="ofoq-review-card" style={{ animationDelay: `${Math.min(index, 7) * 65}ms` }}>
+                <div className="ofoq-review-card-top"><span className="ofoq-review-quote"><Quote size={20}/></span><time>{review.date}</time></div>
+                <div className="ofoq-review-card-stars" aria-label={isArabic ? `${review.rating} من 5 نجوم` : `${review.rating} out of 5 stars`}>
+                  {[1, 2, 3, 4, 5].map(star => <Star key={star} size={15} className={star <= review.rating ? 'is-filled' : ''}/>)}
                 </div>
-                <span className="w-10 text-right rtl:text-left tabular-nums text-slate-300">{count}</span>
-              </div>
-            );
-          })}
-        </div>
-
-      </div>
-
-      {/* Filter Tabs */}
-      <div className="flex items-center gap-2">
-        <span className="text-xs font-mono text-slate-400 flex items-center gap-1.5 mr-2 rtl:ml-2">
-          <Filter className="w-3.5 h-3.5" />
-          <span>{t.reviews.filterRating}:</span>
-        </span>
-        <button
-          onClick={() => setSelectedRating('all')}
-          className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-            selectedRating === 'all'
-              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-              : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
-          }`}
-        >
-          {t.reviews.allRatings} ({stats.totalCount})
-        </button>
-        <button
-          onClick={() => setSelectedRating(5)}
-          className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-            selectedRating === 5
-              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-              : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
-          }`}
-        >
-          5 {lang === 'ar' ? 'نجوم' : 'Stars'} ({stats.distribution[5] || 0})
-        </button>
-        <button
-          onClick={() => setSelectedRating(4)}
-          className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors cursor-pointer ${
-            selectedRating === 4
-              ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-              : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
-          }`}
-        >
-          4 {lang === 'ar' ? 'نجوم' : 'Stars'} ({stats.distribution[4] || 0})
-        </button>
-      </div>
-
-      {/* Reviews List */}
-      {filteredReviews.length === 0 ? (
-        <div className="rounded-2xl border border-slate-800 bg-[#091122] p-8 sm:p-10 text-center space-y-3">
-          <h2 className="text-xl font-bold text-white">{lang === 'ar' ? 'لا توجد تقييمات منشورة حتى الآن' : 'No published reviews yet'}</h2>
-          <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-400">
-            {lang === 'ar' ? 'يمكنك إرسال تقييمك، وسيظهر بعد مراجعته واعتماده من الإدارة.' : 'You can submit a review. It will appear here after it has been reviewed and approved by the team.'}
-          </p>
-        </div>
-      ) : <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredReviews.map((review) => {
-          const currentHelpful = helpfulMap[review.id] ?? review.helpfulCount;
-          return (
-            <div
-              key={review.id}
-              className="p-7 rounded-2xl bg-[#091122] border border-slate-800 hover:border-cyan-500/30 transition-all duration-300 flex flex-col justify-between space-y-5"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-cyan-400 text-cyan-400" />
-                    ))}
+                <p className="ofoq-review-comment">“{review.comment[lang]}”</p>
+                <div className="ofoq-review-author">
+                  <div className="ofoq-review-avatar" aria-hidden="true">{review.authorName.trim().slice(0, 1)}</div>
+                  <div className="ofoq-review-author-copy">
+                    <strong>{review.authorName}{review.verified && <span className="ofoq-review-verified"><ShieldCheck size={13}/>{t.reviews.verifiedClient}</span>}</strong>
+                    <span>{review.authorRole[lang]}</span><small>{review.company} · {review.sector[lang]}</small>
                   </div>
-                  <span className="text-xs font-mono text-slate-500">{review.date}</span>
+                  <button type="button" onClick={() => handleHelpfulClick(review.id, review.helpfulCount)} aria-label={isArabic ? 'علّم هذا التقييم بأنه مفيد' : 'Mark this review as helpful'} title={t.reviews.helpful}>
+                    <ThumbsUp size={15}/><span>{currentHelpful}</span>
+                  </button>
                 </div>
-
-                <p className="text-sm text-slate-300 leading-relaxed italic">
-                  "{review.comment[lang]}"
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <p className="text-xs font-bold text-white">{review.authorName}</p>
-                    {review.verified && (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-800/50 px-1.5 py-0.5 rounded">
-                        <ShieldCheck className="w-3 h-3" />
-                        <span>Verified</span>
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-xs text-cyan-400 mt-0.5">{review.authorRole[lang]}</p>
-                  <p className="text-xs text-slate-400">{review.company} · {review.sector[lang]}</p>
-                </div>
-
-                <button
-                  onClick={() => handleHelpfulClick(review.id, review.helpfulCount)}
-                  className="flex items-center gap-1.5 px-2.5 py-1 text-xs text-slate-400 hover:text-cyan-300 bg-slate-900 border border-slate-800 rounded transition-colors cursor-pointer"
-                  title="Mark review as helpful"
-                >
-                  <ThumbsUp className="w-3.5 h-3.5" />
-                  <span className="font-mono tabular-nums">{currentHelpful}</span>
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>}
-
-    </div>
+              </article>;
+            })}
+          </div>
+        )}
+      </section>
+    </main>
   );
 };

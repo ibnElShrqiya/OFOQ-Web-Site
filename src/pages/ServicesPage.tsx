@@ -20,7 +20,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({
   const t = translations[lang];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
+    <div className="ofoq-page ofoq-services-page max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
       
       {/* Header */}
       <div className="max-w-3xl">

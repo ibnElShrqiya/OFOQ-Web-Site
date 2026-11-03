@@ -8,7 +8,7 @@ interface TermsPageProps {
 
 export const TermsPage: React.FC<TermsPageProps> = ({ lang }) => {
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
+    <div className="ofoq-page ofoq-legal-page max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
       
       <div>
         <span className="text-xs font-mono uppercase tracking-wider text-cyan-400 font-semibold">
