@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Activity, ArrowLeft, BookOpen, Boxes, Code2, ExternalLink, FileCode2, FolderKanban, LayoutDashboard, LogOut, Mail, Plus, RefreshCw, Save, Search, ShieldCheck, Trash2, Wrench, X, Star } from 'lucide-react';
-import { adminApi, ContentItem, ContentType, ContactMessage, AdminReview, getToken, setToken } from './adminApi';
+import { adminApi, ApiError, ContentItem, ContentType, ContactMessage, AdminReview, getToken, setToken } from './adminApi';
 
 const TYPES: {id: ContentType; label: string; icon: React.ReactNode}[] = [
   { id: 'project', label: 'المشاريع', icon: <FolderKanban size={18}/> },
@@ -22,7 +22,7 @@ export default function AdminApp() {
   const load = useCallback(async () => {
     setError('');
     try { const [me, content, inbox, reviewData] = await Promise.all([adminApi.me(), adminApi.listContent(type), adminApi.messages(), adminApi.reviews()]); setUser(me); setItems(content.items); setMessages(inbox.items); setReviews(reviewData.items); }
-    catch (e) { const msg = e instanceof Error ? e.message : 'تعذر تحميل البيانات'; setError(msg); if (/auth|token|unauthorized|401/i.test(msg)) { setToken(null); setUser(null); } }
+    catch (e) { const msg = e instanceof Error ? e.message : 'تعذر تحميل البيانات'; setError(msg); if (e instanceof ApiError && e.status === 401) { setToken(null); setUser(null); } }
   }, [type]);
   useEffect(() => { if (getToken()) void load(); }, [load]);
   const login = async (e: React.FormEvent) => { e.preventDefault(); setLoginBusy(true); setError(''); try { const data = await adminApi.login(email.trim(), password); setToken(data.access_token); setPassword(''); await load(); } catch (e) { setError(e instanceof Error ? e.message : 'فشل تسجيل الدخول'); } finally { setLoginBusy(false); } };

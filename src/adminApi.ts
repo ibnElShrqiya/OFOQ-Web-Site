@@ -12,6 +12,10 @@ const TOKEN_KEY = 'ofoq_admin_access_token';
 export const getToken = () => sessionStorage.getItem(TOKEN_KEY);
 export const setToken = (token: string | null) => token ? sessionStorage.setItem(TOKEN_KEY, token) : sessionStorage.removeItem(TOKEN_KEY);
 
+export class ApiError extends Error {
+  constructor(message: string, public status: number) { super(message); }
+}
+
 async function request<T>(url: string, init: RequestInit = {}): Promise<T> {
   const token = getToken();
   const headers = new Headers(init.headers);
@@ -19,7 +23,7 @@ async function request<T>(url: string, init: RequestInit = {}): Promise<T> {
   if (token) headers.set('Authorization', `Bearer ${token}`);
   const response = await fetch(url, { ...init, headers, credentials: 'same-origin' });
   const result = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(result.error || `Request failed (${response.status})`);
+  if (!response.ok) throw new ApiError(result.error || `تعذر تنفيذ الطلب (${response.status})`, response.status);
   return result as T;
 }
 export const adminApi = {

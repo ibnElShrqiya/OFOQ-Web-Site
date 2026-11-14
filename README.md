@@ -1,32 +1,55 @@
-OFOQ website updates
+# OFOQ Web Site
 
-These are complete replacement files prepared for:
-https://github.com/ibnElShrqiya/OFOQ-Web-Site
+موقع أفق: واجهة React (Vite) مع واجهات API تعمل كـ Cloudflare Pages Functions وقاعدة بيانات Supabase، ولوحة إدارة على `/admin`.
 
-Copy each file to the matching repository path. Remove src/components/SourceCodeExportModal.tsx; its navigation links and server download endpoint are removed in the replacement files.
+## البنية
 
-The public contact email is harammasr54@gmail.com and appears in the footer, contact page, company data, and structured site metadata.
+- `src/` واجهة الموقع ولوحة الإدارة (`/admin`).
+- `functions/api/` واجهات API (تعمل على Cloudflare Pages بدون خادم منفصل):
+  - عامة: `GET /api/content`، `GET/POST /api/reviews`، `POST /api/contact`، `GET /api/health`
+  - الإدارة (تتطلب حساب admin): `/api/admin/login`، `/api/admin/me`، `/api/admin/content`، `/api/admin/messages`، `/api/admin/reviews`
+- `functions/_lib/api.js` الدوال المشتركة (Supabase والتحقق والمصادقة).
+- `public/_headers` ترويسات الأمان.
+- `supabase-schema.sql` الجداول وسياسات RLS.
 
-The changes improve narrow-screen wrapping and spacing, remove the project source download flow, replace unsupported company claims and performance promises with neutral language, and identify the AI assessment as a self-check.
+## الإعداد
 
-Direct GitHub updates could not be saved because the connected GitHub integration returned HTTP 403 (Resource not accessible by integration). No repository files were changed remotely.
+1. **Supabase:** شغّل `supabase-schema.sql` في SQL Editor، ثم أنشئ المدير من Authentication → Users، وامنحه الدور:
 
-The AI assistant has been removed from the UI, navigation, homepage, API server, and package dependencies. Remove src/pages/ChatPage.tsx from the repository.
+   ```sql
+   update public.profiles p
+   set role = 'admin', updated_at = now()
+   from auth.users u
+   where p.id = u.id and lower(u.email) = lower('admin@example.com');
+   ```
 
-## Cloudflare Pages deployment
+   يجب أن يتحدّث صف واحد فقط. لا يوجد تسجيل عام للوحة الإدارة.
 
-The Vite source entry in index.html is intended for the Vite build; it must not be published directly. Run `npm run build` and configure Cloudflare Pages with the repository root as the project root, `npm run pages:build` as the build command, and `dist` as the build output directory. The Wrangler Pages setting in wrangler.toml also declares `./dist`.
+2. **Cloudflare Pages:** Build command: `npm run pages:build`، Output directory: `dist`. ثم في Settings → Variables and Secrets أضف للبيئتين Production و Preview:
 
-This repository's Express application in server.ts is not run by a static Pages deployment. Keep Express and its Supabase-backed API on the existing Node.js host, and configure any required API routing/origin there. Do not put Supabase service-role credentials in Vite variables or browser code; keep them only in the Express host's server-side environment.
+   | المتغير | النوع |
+   | --- | --- |
+   | `SUPABASE_URL` | Text |
+   | `SUPABASE_ANON_KEY` | Text (المفتاح العام) |
+   | `SUPABASE_SERVICE_ROLE_KEY` | **Secret** (المفتاح السري، لا تضعه في Git ولا في متغير يبدأ بـ `VITE_`) |
 
+   بعد إضافة المتغيرات أعد النشر (Retry deployment) لتُطبَّق.
 
-## Cloudflare Pages database reads
+3. **التحقق بعد النشر:** افتح `/api/health`؛ يجب أن يعيد `{"status":"ok","database":"connected"}`. إذا أعاد 503 فالمتغيرات ناقصة أو لم يُطبَّق المخطط.
 
-This Pages project serves the public content and approved reviews through Pages Functions at `/api/content` and `/api/reviews`. In **Workers & Pages → ofoq-web-site → Settings → Variables and Secrets**, configure `SUPABASE_URL` and `SUPABASE_ANON_KEY` for both Production and Preview. Use the Supabase project URL and its publishable/anon key. The key is public by design and is restricted by the database's row-level security policies. Never add `SUPABASE_SERVICE_ROLE_KEY` to Pages or browser code.
+## التطوير المحلي
 
-Pages Functions handle public reads. The Express server remains in the repository for server-side writes and administration and must run on a Node.js host if those API features are used.
+```bash
+npm install
+npm run lint
+npm run build
+cp .dev.vars.example .dev.vars   # ثم املأ القيم
+npx wrangler pages dev dist      # الموقع مع واجهات API
+```
 
+`npm run dev` يشغّل واجهة Vite فقط بدون واجهات `/api`.
 
-## Site page routes
+## ملاحظات
 
-Each public section has a direct URL: `/`, `/services`, `/projects`, `/library`, `/about`, `/reviews`, `/assessment`, `/contact`, `/privacy`, and `/terms`. Navigation updates browser history, so refresh, back, and forward keep the selected page. Cloudflare Pages serves the SPA entry point for these paths when no top-level `404.html` is present.
+- تحديد معدل الطلبات (rate limiting) داخل الـ Functions جزئي لأن العدّاد يعيش في ذاكرة instance واحدة. لحماية أقوى فعّل Cloudflare Rate Limiting Rules على `/api/admin/login` و`/api/contact` و`/api/reviews`.
+- المعرض والتقييمات تبدأ فارغة عمدًا: أضف فقط مشاريع حقيقية مسموح بنشرها وتقييمات معتمدة من لوحة الإدارة.

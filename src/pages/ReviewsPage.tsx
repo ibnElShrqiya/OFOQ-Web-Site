@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language, ReviewItem } from '../types.ts';
 import { translations } from '../data/translations.ts';
-import { calculateReviewStats } from '../data/storage.ts';
+import { calculateReviewStats } from '../data/reviewStats.ts';
 import { Filter, Plus, Quote, ShieldCheck, Sparkles, Star, ThumbsUp } from 'lucide-react';
 
 interface ReviewsPageProps {

@@ -1,0 +1,6 @@
+# Copy to .dev.vars for local testing with `npx wrangler pages dev dist`.
+# In production set these in Cloudflare Pages > Settings > Variables and Secrets.
+SUPABASE_URL=https://gmdcappxvfghnqmbrbio.supabase.co
+SUPABASE_ANON_KEY=sb_publishable_REPLACE_ME
+# Secret: add as an encrypted Secret in Cloudflare. Never commit it or prefix it with VITE_.
+SUPABASE_SERVICE_ROLE_KEY=sb_secret_REPLACE_ME

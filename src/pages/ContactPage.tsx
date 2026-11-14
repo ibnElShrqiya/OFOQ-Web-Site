@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Language } from '../types.ts';
 import { translations } from '../data/translations.ts';
 import { servicesData } from '../data/servicesData.ts';
-import { saveContactSubmission } from '../data/storage.ts';
 import { 
   Send, 
   CheckCircle2, 
@@ -62,8 +61,6 @@ export const ContactPage: React.FC<ContactPageProps> = ({
       });
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.error || (lang === 'ar' ? 'تعذر إرسال الرسالة. حاول لاحقًا.' : 'Unable to send your message. Please try again.'));
-      // Keep a local copy for the existing on-device history, but the database is authoritative.
-      saveContactSubmission({ name: name.trim(), email: email.trim(), company: company.trim(), phone: phone.trim(), serviceId, priority, message: message.trim() });
       setIsSuccess(true);
     } catch (error) {
       setErrorMessage(error instanceof Error ? error.message : (lang === 'ar' ? 'حدث خطأ غير متوقع.' : 'An unexpected error occurred.'));

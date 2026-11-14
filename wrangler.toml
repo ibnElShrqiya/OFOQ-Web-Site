@@ -1,6 +1,4 @@
-# Cloudflare Pages serves the compiled Vite site from dist.
-# Keep Express (server.ts) on a Node.js host or a separately configured API service.
+# Cloudflare Pages: static site from dist plus API routes from functions/.
 name = "ofoq-web-site"
-
 pages_build_output_dir = "./dist"
 compatibility_date = "2026-11-01"

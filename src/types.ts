@@ -51,13 +51,6 @@ export interface ReviewItem {
   helpfulCount: number;
 }
 
-export interface FaqItem {
-  id: string;
-  question: { en: string; ar: string };
-  answer: { en: string; ar: string };
-  category: 'general' | 'development' | 'process' | 'pricing';
-}
-
 export interface OfficeLocation {
   city: { en: string; ar: string };
   country: { en: string; ar: string };
@@ -66,19 +59,6 @@ export interface OfficeLocation {
   email: string;
   hours: { en: string; ar: string };
   isHQ?: boolean;
-}
-
-export interface ContactSubmission {
-  id: string;
-  name: string;
-  email: string;
-  company: string;
-  phone: string;
-  serviceId: string;
-  priority?: string;
-  timeline?: string;
-  message: string;
-  createdAt: string;
 }
 
 export interface AssessmentQuestion {

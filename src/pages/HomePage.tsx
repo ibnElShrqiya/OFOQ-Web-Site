@@ -4,7 +4,7 @@ import { translations } from '../data/translations.ts';
 import { GlassObjectScene } from '../components/ReferenceScenes.tsx';
 import { servicesData } from '../data/servicesData.ts';
 import { projectsData } from '../data/projectsData.ts';
-import { calculateReviewStats } from '../data/storage.ts';
+import { calculateReviewStats } from '../data/reviewStats.ts';
 import { ArrowDownLeft, ArrowLeft, ArrowRight, ArrowUpLeft, ArrowUpRight, CheckCircle2, Code2, Cpu, Globe2, Layers3, Palette, ShieldCheck, Star } from 'lucide-react';
 
 interface HomePageProps {
